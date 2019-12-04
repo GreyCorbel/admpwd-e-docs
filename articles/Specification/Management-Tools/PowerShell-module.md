@@ -373,7 +373,7 @@ No specific permissions needed.</td>
 <td>
 Sets each access control parameter.</td>
 <td>Communicates with PDS.
-Need PDS admin rights.</td>
+Needs PDS admin rights.</td>
 </tr>
 
 <tr>
@@ -381,7 +381,7 @@ Need PDS admin rights.</td>
 <td>
 Sets parameters in DNS SRV record.</td>
 <td>Communicates with !!!Nutno doplnit!!!.
-Need PDS admin rights.</td>
+Needs PDS admin rights.</td>
 </tr>
 
 <tr>
@@ -389,7 +389,7 @@ Need PDS admin rights.</td>
 <td>
 Sets parameters of license file.</td>
 <td>Communicates with PDS.
-Need PDS admin rights.</td>
+Needs PDS admin rights.</td>
 </tr>
 
 <tr>
@@ -397,7 +397,7 @@ Need PDS admin rights.</td>
 <td>
 Sets each parameter of managed accounts.</td>
 <td>Communicates with PDS.
-Need PDS admin rights.</td>
+Needs PDS admin rights.</td>
 </tr>
 
 <tr>
@@ -405,7 +405,7 @@ Need PDS admin rights.</td>
 <td>
 Transfer PDS admin rights to new owner.</td>
 <td>Communicates with PDS.
-Need PDS admin rights.</td>
+Needs PDS admin rights.</td>
 </tr>
 
 </tbody>
