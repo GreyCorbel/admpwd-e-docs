@@ -408,8 +408,6 @@ Transfer PDS admin rights to new owner.</td>
 Need PDS admin rights.</td>
 </tr>
 
-
-
 </tbody>
 </table>
 
