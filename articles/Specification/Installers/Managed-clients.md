@@ -15,7 +15,10 @@ In addition, during CSE installation, the following actions can be performed:
  	<li>Reset password of built-in local admin account
 <ul>
  	<li>Account receives cryptographically random, 16 characters long, complex password</li>
- 	<li>Installer performs this action when value of property <code>PROTECTBUILTINADMIN</code> is set to “true”</li>
+ 	<li>Installer performs this action when value of property <code>PROTECTBUILTINADMIN</code> is set to “true”
+	 <br/>
+	 <em>Note</em>: This action is performed only on domain joined machines by default - this is to prevent unwanted locking of access to standalone machine. To perform it on standalone machine as well, you must also add parameter <code>FORCE=true</code>
+	 </li>
 </ul>
 </li>
 </ul>
