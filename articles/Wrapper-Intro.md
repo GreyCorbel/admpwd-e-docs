@@ -30,3 +30,4 @@ For more information, see [Integration SDK](Specification/Management-Tools.md#in
 |[v7.5.5.0](Version/v7.5.5.0.md)|01 May 2018|
 |[v7.6.0.0](Version/v7.6.0.0.md)|31 Dec 2018|
 |[v7.7.0.0](Version/v7.7.0.0.md)|14 Jul 2019|
+|[v7.7.1.0](Version/v7.7.0.0.md)|24 Dec 2019|
