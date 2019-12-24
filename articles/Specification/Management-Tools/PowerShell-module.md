@@ -1,4 +1,4 @@
-﻿# PowerShell module
+# PowerShell module
 
 PowerShell module implements cmdlets as specified in table below:
 <table>
@@ -34,6 +34,16 @@ Needs Enterprise admin and Schema Admin permission</td>
 <td>Communicates with PDS
 
 Needs Read Admin Password permission
+
+Audited by PDS</td>
+</tr>
+<tr>
+<td>Get-AdmPwdCredential</td>
+<td>Retrieves password of local admin account for given computer, of password of managed domain account, as PSCredential object. Optionally plans for automatic password reset</td>
+<td>Communicates with PDS
+
+Needs Read Admin Password permission
+Needs Reset Password permission (only when automatic password change is required)
 
 Audited by PDS</td>
 </tr>
@@ -335,7 +345,83 @@ Audited
 PDS Admin role required
 </td>
 </tr>
+
+<tr>
+<td>Get-AdmPwdAccessControlParameters</td>
+<td>
+Returns values of parameters for access control. Acces control is scaled to the following granularity by this attributes: HonorFullControlPermission, HonorAllExtendedRightsPermission, HonorLocalGroupsFromRemoteComputerDomain</td>
+<td>Communicates with PDS.
+No specific permissions needed.</td>
+</tr>
+
+<tr>
+<td>Get-AdmPwdPdsDnsParameters</td>
+<td>
+Returns values of DNS SRV record. That is used by service clients to find live instance of the service.</td>
+<td>Communicates with !!!potřeba doplnit!!!
+No specific permissions needed.</td>
+</tr>
+
+<tr>
+<td>Get-AdmPwdPdsLicenseParameters</td>
+<td>
+Returns values of license parameters, specifically these: PdsName and LicenseFilePath</td>
+<td>Communicates with PDS.
+No specific permissions needed.</td>
+</tr>
+
+<tr>
+<td>Get-AdmPwdPdsManagedAccountsParameters</td>
+<td>
+Returns values of managed accounts parameters, specifically these: PasswordManagementInterval, DistinguishedName, PasswordAge, KeyId, PasswordComplexity, PasswordLength, PasswordHistory and PasswordHistoryLength.</td>
+<td>Communicates with PDS.
+No specific permissions needed.</td>
+</tr>
+
+<tr>
+<td>Set-AdmPwdPdsAccessControlParameters</td>
+<td>
+Sets each access control parameter.</td>
+<td>Communicates with PDS.
+Needs PDS admin rights.</td>
+</tr>
+
+<tr>
+<td>Set-AdmPwdPdsDnsParameters</td>
+<td>
+Sets parameters in DNS SRV record.</td>
+<td>Communicates with !!!Nutno doplnit!!!.
+Needs PDS admin rights.</td>
+</tr>
+
+<tr>
+<td>Set-AdmPwdPdsLicenseParameters</td>
+<td>
+Sets parameters of license file.</td>
+<td>Communicates with PDS.
+Needs PDS admin rights.</td>
+</tr>
+
+<tr>
+<td>Set-AdmPwdPdsManagedAccountsParameters</td>
+<td>
+Sets each parameter of managed accounts.</td>
+<td>Communicates with PDS.
+Needs PDS admin rights.</td>
+</tr>
+
+<tr>
+<td>Move-AdmPwdPdsAdminRole</td>
+<td>
+Transfer PDS admin rights to new owner.</td>
+<td>Communicates with PDS.
+Needs PDS admin rights.</td>
+</tr>
+
 </tbody>
 </table>
 
-*Note*: For usage of PowerShell commands, refer to cmdlet help that comes with PowerShell module (Get-Help )
+
+
+*Note*: For usage of PowerShell commands, refer to cmdlet help that comes with PowerShell module (Get-Help <commaand> )
+
