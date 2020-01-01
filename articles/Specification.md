@@ -1,5 +1,5 @@
 ﻿# Technical specification
-`Updated: 24.12.2019`  
+`Updated: 1.1.2020`  
 Solution consists of the following components:
 * Client-side management runtime
 * Server-side management service (password decryption service, or PDS)
@@ -28,7 +28,7 @@ Content in this section provides technical specification of the solution. Conten
 There are also supporting and integration tools available, namely:
 * Integration SDK that allows easy integration of solution toother products
   * available as [NuGet package](https://www.nuget.org/packages/Greycorbel.AdmPwd-E.PDSWrapper/)
-* Web UI - available as open source product on [Github](https://github.com/GreyCorbel/admpwd-e/tree/master/Clients/WebUI)
+* Web UI - available as open source project on [Github](https://github.com/GreyCorbel/admpwd-e/tree/master/Clients/WebUI)
 * Sample tools that demonstrate usage of Integration SDK - available as open source on [Github](https://github.com/GreyCorbel/admpwd-e/tree/master/Clients)
 * Implementation of additional keystores for storage of proivate keys maintained by PDS - available as open source on [Github](https://github.com/GreyCorbel/admpwd-e/tree/master/KeyStores)
 
