@@ -215,7 +215,7 @@
       <para>Call is audited</para>
     </remarks>
         </member>
-        <member name="M:AdmPwd.PDSUtils.PdsWrapper.UpdateAccessControlParameters(AdmPwd.Types.PdsEndpoint,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+        <member name="M:AdmPwd.PDSUtils.PdsWrapper.UpdateAccessControlParameters(AdmPwd.Types.PdsEndpoint,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.String[])">
             <summary>
       Updates parameters of access control process for password reads and resets.
     </summary><param name="Pds">
@@ -237,7 +237,7 @@
         In this case, when PDS is performing access check, it normally does NOT see user U being member of group DLG (because membership in Domain Local groups is not propagated to other domains in forest), and because of that, it replies with AccessDenied error. Setting this parameter to true makes PDS to perform direct lookup for local group membership of user in his home domain to make sure that complete membership is evaluated. 
         This additional lookup consumes PDS service resources and requires direct connection between PDS and domain controller of user's domain, so delegation using domain Local groups in multi-forest domains should be avoided.
       </para>
-    </param><returns>
+    </param><param name="MandatoryGroupSids">List of Security Identifiers (SIDs) that caller additionally must be member of for calls to password reads/resets to succeed. Membership in such groups is then additional gate that allows to perform active operations. If multiple groups specified, user must be member of at least 1 of them. This helps implement additional levels of access control, such as JIT of Authentication Mechanism Assurance (AMA)</param><returns>
     </returns><remarks>
       <para>PDS Admin role is required to successfully call this method</para>
       <para>Call is audited</para>
@@ -1109,6 +1109,11 @@
             Whether to include local group membership from user's domain (when it's different from PDS domain) to consideration when prforming access check.
             </summary>
         </member>
+        <member name="P:AdmPwd.Types.AccessControlParameters.MandatoryGroups">
+            <summary>
+            SIDs of mandatory groups that caller must be member of so as password reads/resets are allowed
+            </summary>
+        </member>
         <member name="T:AdmPwd.Types.LicenseParameters">
             <summary>
             License parameters
@@ -1144,35 +1149,40 @@
             Information about discovered PDS instance
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.PdsEndpoint.Host">
+        <member name="P:AdmPwd.Types.PdsEndpoint.ServicedForest">
+            <summary>
+            Which AD forest this endpoint is servicing. Useful for management tools that want to operate against various forests (such as machines of vendors working for multiple customers)
+            </summary>
+        </member>
+        <member name="P:AdmPwd.Types.PdsEndpoint.Host">
             <summary>
             Hostname of PDS server
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.PdsEndpoint.Port">
+        <member name="P:AdmPwd.Types.PdsEndpoint.Port">
             <summary>
             TCP and UDP port where PDS listens to requests
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.PdsEndpoint.Priority">
+        <member name="P:AdmPwd.Types.PdsEndpoint.Priority">
             <summary>
             SRV record priority<br/>
             Note: For PDS intances discovered from GPO it's always 100.
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.PdsEndpoint.Weight">
+        <member name="P:AdmPwd.Types.PdsEndpoint.Weight">
             <summary>
             SRV record weight<br/>
             Note: For PDS intances discovered from GPO, priority is set according to order they're listed in GPO - entries at the beginning are more preferred.
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.PdsEndpoint.TTL">
+        <member name="P:AdmPwd.Types.PdsEndpoint.TTL">
             <summary>
             SRV record TTL
             Note: For PDS isntances discovered from GPO it's always 1200.
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.PdsEndpoint.isAlive">
+        <member name="P:AdmPwd.Types.PdsEndpoint.IsAlive">
             <summary>
             Whether or not the PDS instance seems to be alive
             </summary>
@@ -1184,7 +1194,7 @@
             <param name="other"></param>
             <returns></returns>
         </member>
-        <member name="M:AdmPwd.Types.PdsEndpoint.#ctor(System.String,System.UInt16,System.UInt16,System.UInt16,System.UInt32)">
+        <member name="M:AdmPwd.Types.PdsEndpoint.#ctor(System.String,System.UInt16,System.UInt16,System.UInt16,System.UInt32,System.String)">
             <summary>
             Constructor
             </summary>
@@ -1193,13 +1203,7 @@
             <param name="priority">PDS priority</param>
             <param name="weight">PDS weight. Currently not used</param>
             <param name="ttl">PDS TTL</param>
-        </member>
-        <member name="M:AdmPwd.Types.PdsEndpoint.#ctor(System.String,System.UInt16)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="host">PDS hostname</param>
-            <param name="port">PDS listening port</param>
+            <param name="forest">Forest serviced by this instance</param>
         </member>
     </members>
 </doc>

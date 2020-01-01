@@ -27,9 +27,12 @@ Managed by policy <em>“PDS service runs using domain account”</em></td>
 <td>PDSList</td>
 <td>REG_MULTI_SZ</td>
 <td>List of PDS instances to be used by administrative tools. When this value is specified, management tools do not USE DNS SRV records to discover PDS instances, and rather use instances specified here.
+
 Supported format of values:
-&lt;Host FQDN&gt;(Example: host.domain.com)
-&lt;Host FQDN&gt;:&lt;Port&gt; (Example: host.domain.com:61185)The latter format can be used when PDS does not listen on default tcp port (61184).
+- &lt;Host FQDN&gt;(Example: host.domain.com)
+- &lt;Host FQDN&gt;:&lt;Port&gt; (Example: host.domain.com:61185 - used when PDS does not listen on default port)
+- &lt;Host FQDN&gt;:&lt;Port&gt:&lt;AD Forest DNS Name&gt; (Example: host.domain.forest.com:61184:forest.com - used when UI and POwerSHell module are expected to work withz multiple independent AD forests)
+
 PDS instances are used in order specified in the value
 Managed by policy <em>“PDS to be used”</em></td>
 </tr>
