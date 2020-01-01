@@ -5,10 +5,13 @@ This reference covers interface provided by AdmPwd Enterprise PDS integration li
 * Generate encryption/decryption key pairs
 * Use other functionality provided by Password Decryption Service (PDS)
 * Get information about state of environment
+* Manage configuration of PDS service
 
 All this without the need to know details about how to:
 * Discover online instance of PDS
+    * Discovery information is published by either PDS itself (via DNS SRV records) or by environment administrator (via GPO)
 * Connect to PDS interface and perform authentication
+    * SDK connects to discovered PDS instance automatically and uses Windows authentication
 
 
 ## Getting Started
