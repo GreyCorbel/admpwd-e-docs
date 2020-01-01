@@ -24,8 +24,38 @@ User's certificate must have EKU = Client Authentication + SmartCard Logon. Cert
 This is all what's needed.
 
 ## Optional configurations
-You can configure [Authentication Mechanism Assurance (AMA)](https://blogs.technet.microsoft.com/askds/2011/02/25/friday-mail-sack-no-redesign-edition/#amapki) on your domain controler and PKI, so not all certificates with proper EKU are usable for authentication against PDS (remember, PDS supports AMA via *Pds – AccessControl - MandatoryGroups* configuration parameter). AMA does not prevent you to receive Kerberos token, but helps further restricts what the token can be used for.
+### Authentication mechanism assurance (AMA)
+You can configure [Authentication Mechanism Assurance (AMA)](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd378897(v=ws.10)) on your domain controler and PKI, so not all certificates with proper EKU are usable for authentication against PDS (remember, PDS supports AMA via *Pds – AccessControl - MandatoryGroups* configuration parameter). AMA does not prevent you to receive Kerberos token, but helps further restricts what the token can be used for.
 
+To start with AMA, you just need:
+* Create and implement appripriate Certificate Issuance Policies
+* Create Universal, Security group in AD for each Issuance Policy
+* Put DN of associated AD group to msDS-OIDToGroupLink of respective Issuance policy
+* Create or updated certificate templates to contain appropriate Issuance policy in Issuance policies
+* Issue certificates for users according updated certificate templates
+* Configure Mandatory groups feature of PDS to allow only members of groups associated with approved Issuance policies
+
+Now users will be able to retrieve/reset password only after they authenticate with the certificate - username/password authentication will not allow them password retrieval/reset.
+
+### Multiple environments mamanged from single PC
+Consider the following scenario:
+* You are vendor who manages environment of multiple customers
+* Each customer has own AD forest with instance of PDS
+* You are given Managed Domain Account by each customer that yoiu use to perform management tasks in their environment
+* You use AdmPwd.E tools (UI or PowerShell) to retrieve password of managed domain account
+* You use certificate issued by each customer to authenticate password retrieval, potentially with AMA, as described earlier in this article
+
+What you can do is to configure your machine to support multiple independent PDS instances - 1 or more instances per AD forest of each customer. You use [registry configuration](~/articles/Specification/Management-Tools/Configuration.md) - parameter PDSList.
+Your configuration stored in PDSLIst may look as follows:
+```
+pds.domain.customer1.com:61184:customer1.com
+pds.domain.customer2.com:61184:customer2.com
+dc.customer3.com:61184:customer3.com
+```
+Configuration above makes sure that for each AD forest of each customer, proper PDS instance will be contacted when you need to retrieve the password, such as:
+```PowerShell
+Get-AdmPwdManagedAccountPassword -AccountName jiri -ForestDnsName customer2.com
+```
 ## Caveats
 Validation of certificate used by Domain Controller during authentication on non-domain joined machine may be tricky. This is because AD/LDAP storage of CRL is not available and client must use CRL published on other location that does not require authentication.
 Windows CA issues certificates that specify CRL location as multiple URLs in single CDP entry, like this:
