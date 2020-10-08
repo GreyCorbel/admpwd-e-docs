@@ -16,5 +16,5 @@ Only thing you will have to do is to prevent this PDS instance register its Auto
 
 See [PDS Configuration specification][1] for details on PDS configuration parameters and cmdlets that manage the configuration.
 
-[1]: Specification/Password-Decryption-Service/Configuration.md
+[1]: /Articles/Specification/Password-Decryption-Service/Configuration.md
 

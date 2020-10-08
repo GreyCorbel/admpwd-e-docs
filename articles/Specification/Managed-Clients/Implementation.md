@@ -37,8 +37,8 @@ Management runtime is implemented as follows:
  	* `ms-MCS-AdmPwdHistory`: in case that configuration requires maintenance of password history, timestamp of current time (Directory string) plus password as reported to ms-MCS-AdmPwd attribute  
     *Format*: `<timestamp>:<space><value of ms-MCS-AdmPwd>`  
     *Example*: `20140929233650.0Z: 1: ZmwKf34lH1/+NsjIWSfKQSb4H…`
- 	*Note*: This communication with Active Directory is encrypted with Kerberos encryption (in rare cases may fallback to NTLM encryption, but is still encrypted)
-    **Important**: When management runtime communicates with Active Directory, it avoids talking with RODC and always looks for writable DC to talk with
+ 	*Note*: This communication with Active Directory is encrypted with Kerberos encryption (in rare cases may fallback to NTLM encryption, but is still encrypted)  
+      **Important**: When management runtime communicates with Active Directory, it avoids talking with RODC and always looks for writable DC to talk with
 8. After password and expiration timestamp are successfully reported to AD, the password of managed Administrator account is reset to new value generated in step 5  
     * Reason for this sequence of steps is that we cannot report and reset password as a single transaction.  
     So, we consider the reporting of password to AD as more “error prone” – more things can get wrong as there is network between workstation and domain controller; whereas password reset operation works against local computer.  
@@ -48,4 +48,5 @@ Management runtime is implemented as follows:
 10. In case that some error occurs during the execution, CSE logs the error to Application log and finishes execution, reporting the error to GPO framework that called it</li>
 
 Depending on configured verbosity of logging, management runtime logs activity to Application log of managed machine.  
-When configuration requires storage of logs in central location, management runtime also sends relevant events to central logging service.
+
+When configuration requires storage of logs in central location (configured via GPO - see ```ReportingHost``` and ```ReportingPort``` registry policy in [Managed client configuration](Configuration.md)), management runtime also sends relevant events to central logging service via chosen udp port (61184 by default). Apart from sending this optional client reports, managed clients do not talk with PDS at all.
