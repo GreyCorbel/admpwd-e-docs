@@ -214,6 +214,8 @@ Not audited</td>
 Audited
 
 PDS Admin role required
+
+*Note*: PDS Admin role is required because it also return credentials registered for PDS to access remote forest.
 </td>
 </tr>
 <tr>
@@ -349,7 +351,10 @@ PDS Admin role required
 <tr>
 <td>Get-AdmPwdAccessControlParameters</td>
 <td>
-Returns values of parameters for access control. Acces control is scaled to the following granularity by this attributes: HonorFullControlPermission, HonorAllExtendedRightsPermission, HonorLocalGroupsFromRemoteComputerDomain</td>
+Returns values of parameters for access control. Access control is scaled to the following granularity by this attributes: HonorFullControlPermission, HonorAllExtendedRightsPermission, HonorLocalGroupsFromRemoteComputerDomain
+
+Also returns list of mandatory groups user has to be member of so as PDS fulfills the request.
+</td>
 <td>Communicates with PDS.
 No specific permissions needed.</td>
 </tr>
@@ -358,7 +363,7 @@ No specific permissions needed.</td>
 <td>Get-AdmPwdPdsDnsParameters</td>
 <td>
 Returns values of DNS SRV record. That is used by service clients to find live instance of the service.</td>
-<td>Communicates with !!!potřeba doplnit!!!
+<td>Communicates with PDS
 No specific permissions needed.</td>
 </tr>
 
@@ -390,7 +395,7 @@ Needs PDS admin rights.</td>
 <td>Set-AdmPwdPdsDnsParameters</td>
 <td>
 Sets parameters in DNS SRV record.</td>
-<td>Communicates with !!!Nutno doplnit!!!.
+<td>Communicates with PDS.
 Needs PDS admin rights.</td>
 </tr>
 

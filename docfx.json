@@ -19,6 +19,10 @@
     }
   ],
   "build": {
+    "template": [
+      "default",
+      "default-widescreen"
+    ],
     "content": [
       {
         "files": [
@@ -75,10 +79,6 @@
     "dest": "_site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
-    "template": [
-      "default",
-      "default-widescreen"
-    ],
     "postProcessors": [],
     "markdownEngineName": "markdig",
     "noLangKeyword": false,

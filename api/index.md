@@ -13,6 +13,6 @@ All this without the need to know details about how to:
 To get started, add a reference to integration library to your project, and call static methods exposed by the library. Methods are pretty simple to use and map to high level functionality of the solution.
 
 For example, reading a password of managed admin account is just single line of code in your application.
-For code examples, see open source project with code samples on <a href="https://github.com/jformacek/admpwd-e/tree/master/Clients" target="_blank">GitHub</a>
+For code examples, see open source project with code samples on <a href="https://github.com/GreyCorbel/admpwd-e/tree/master/Clients" target="_blank">GitHub</a>
 
 Enter the reference docs pages [**HERE**](../articles/Wrapper-Intro.md) 

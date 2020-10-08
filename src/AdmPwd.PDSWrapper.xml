@@ -215,7 +215,7 @@
       <para>Call is audited</para>
     </remarks>
         </member>
-        <member name="M:AdmPwd.PDSUtils.PdsWrapper.UpdateAccessControlParameters(AdmPwd.Types.PdsEndpoint,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.String[])">
+        <member name="M:AdmPwd.PDSUtils.PdsWrapper.UpdateAccessControlParameters(AdmPwd.Types.PdsEndpoint,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Security.Principal.SecurityIdentifier[])">
             <summary>
       Updates parameters of access control process for password reads and resets.
     </summary><param name="Pds">
@@ -335,42 +335,6 @@
       </para>
        <para>Caller must have Read Admin Passsword permission on given computer or user object</para>
        <para>Call is audited on PDS</para>
-    </remarks>
-        </member>
-        <member name="M:AdmPwd.PDSUtils.PdsWrapper.GetSecurePassword(System.String,System.String,AdmPwd.Types.IdentityType,System.Boolean,System.Boolean)">
-            <summary>
-      Calls PDS to retrieve password of managed account in given AD forest.
-      Managed account can be either:
-      * Domain computer local admin account
-      * Managed domain account
-    </summary><param name="ForestName">
-      Name of AD forest.
-      Forest must be marked as supported in PDS configuration.
-      For local forest, pass null as parameter value
-    </param><param name="Identity">
-      When retrieving password of computer local admin account, pass name of computer where password of local admin account shall be retrieved. Name of the computer can be passed as one of the following:
-      * Hostname, such as MyComputer
-      * FQDN, such as mycomputer.mydomain.com
-      * Distinguished name, such as cn=MyComputer,ou=MyComputers,dc=mydomain,dc=com
-      <para />
-      When retrieving password of managed domain account, pas the name of domain account. Account name can be passed as one of the following:
-      * sAMAccountName (without domain)
-      * userPrincipalName
-      * distinguishedName
-    </param><param name="Type">
-      Type of the account to retrieve password for. Can be one of the supported account types:
-      * LocalComputerAdmin
-      * ManagedDomainAccount
-    </param><param name="IncludePasswordHistory">Whether or not to include password history</param><param name="IsDeleted">
-      Whether computer account or managed domain account is deleted or not.
-      Note: there may be multiple deleted objects with the same name. In such case, password for most recently deleted object is returned
-    </param><returns>Password, current password expiration time and optional password history. Passwords returned as secure strings</returns><remarks>
-      <para>Name of local admin account is not stored by solution. Caller is expected to know name of local managed account</para>
-      <para>
-        PDS does not try to guess domain or forest name from computer name - it searches against Global Catalog interface of AD forest passed in <paramref name="ForestName" /> parameter
-      </para>
-      <para>Caller must have Read Admin Passsword permission on given computer or user object</para>
-      <para>Call is audited on PDS</para>
     </remarks>
         </member>
         <member name="M:AdmPwd.PDSUtils.PdsWrapper.ResetPassword(System.String,System.String,AdmPwd.Types.IdentityType,System.DateTime)">
@@ -537,6 +501,12 @@
             List of permissions
             </summary>
         </member>
+        <member name="M:AdmPwd.Types.UserPermissionStats.#ctor(System.String)">
+            <summary>
+            Constructs the object
+            </summary>
+            <param name="user">Name of the user</param>
+        </member>
         <member name="T:AdmPwd.Types.PermissionEntry">
             <summary>
             Permission entry for user on given AD object
@@ -606,17 +576,17 @@
             <para/>  Reset-AdmPwdManagedAccountPassword
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.PasswordResetStatus.Name">
+        <member name="P:AdmPwd.Types.PasswordResetStatus.Name">
             <summary>
             Name of user or computer for which was reset performed
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.PasswordResetStatus.DistinguishedName">
+        <member name="P:AdmPwd.Types.PasswordResetStatus.DistinguishedName">
             <summary>
             DistinguishedName of computer account or managed domain user account
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.PasswordResetStatus.Status">
+        <member name="P:AdmPwd.Types.PasswordResetStatus.Status">
             <summary>
             Result of operation
             </summary>
@@ -629,41 +599,36 @@
             <param name="dn">DistinguishedName of computer or user account</param>
             <param name="state">Result of operation</param>
         </member>
-        <member name="T:AdmPwd.Types.PasswordInfoBase">
-            <summary>
-            Base structure that contains informtion about password of managed object
-            </summary>
-        </member>
-        <member name="F:AdmPwd.Types.PasswordInfoBase.Name">
-            <summary>
-            Name of object
-            </summary>
-        </member>
-        <member name="F:AdmPwd.Types.PasswordInfoBase.DistinguishedName">
-            <summary>
-            DistinguishedName of object
-            </summary>
-        </member>
-        <member name="F:AdmPwd.Types.PasswordInfoBase.ExpirationTimestamp">
-            <summary>
-            Expiration time of password
-            </summary>
-        </member>
-        <member name="F:AdmPwd.Types.PasswordInfoBase.KeyId">
-            <summary>
-            ID of RSA key that was used to encrypt the password
-            <para/>0 means that password is not encrypted in AD
-            </summary>
-        </member>
         <member name="T:AdmPwd.Types.PasswordInfo">
             <summary>
-            Structure that contains informtion about password of managed object
+            Structure that contains information about password of managed object and password history (if present on object)
             Returned by the following cmdlets:
             <para/>    Get-AdmPwdPassword
             <para/>    Get-AdmPwdManagedAccountPassword
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.PasswordInfo.Password">
+        <member name="P:AdmPwd.Types.PasswordInfo.Name">
+            <summary>
+            Name of object
+            </summary>
+        </member>
+        <member name="P:AdmPwd.Types.PasswordInfo.DistinguishedName">
+            <summary>
+            DistinguishedName of object
+            </summary>
+        </member>
+        <member name="P:AdmPwd.Types.PasswordInfo.ExpirationTimestamp">
+            <summary>
+            Expiration time of password
+            </summary>
+        </member>
+        <member name="P:AdmPwd.Types.PasswordInfo.KeyId">
+            <summary>
+            ID of RSA key that was used to encrypt the password
+            <para/>0 means that password is not encrypted in AD
+            </summary>
+        </member>
+        <member name="P:AdmPwd.Types.PasswordInfo.Password">
             <summary>
             Password of managed account - local admin account on managed computer or managed domain account
             </summary>
@@ -673,61 +638,39 @@
             Password history information
             </summary>
         </member>
-        <member name="T:AdmPwd.Types.SecurePasswordInfo">
+        <member name="M:AdmPwd.Types.PasswordInfo.#ctor(System.String,System.String,System.DateTime,System.UInt32,System.String)">
             <summary>
-            Structure that contains informtion about password of managed object
-            Returned by the following cmdlets:
-            <para/>    Get-AdmPwdPassword
-            <para/>    Get-AdmPwdManagedAccountPassword
+            Constructs the object
             </summary>
-        </member>
-        <member name="F:AdmPwd.Types.SecurePasswordInfo.Password">
-            <summary>
-            Password of managed account protected as secure string - local admin account on managed computer or managed domain account
-            </summary>
-        </member>
-        <member name="F:AdmPwd.Types.SecurePasswordInfo.PasswordHistory">
-            <summary>
-            Password history information
-            </summary>
-        </member>
-        <member name="T:AdmPwd.Types.PasswordHistoryBase">
-            <summary>
-            Base class for password history.
-            <para/>Returned as a member of <see cref="T:AdmPwd.Types.PasswordInfo"/> class
-            </summary>
-        </member>
-        <member name="P:AdmPwd.Types.PasswordHistoryBase.ValidSince">
-            <summary>
-            When password started to be valid
-            </summary>
-        </member>
-        <member name="P:AdmPwd.Types.PasswordHistoryBase.ValidUntil">
-            <summary>
-            When password was reset/replaced
-            </summary>
-        </member>
-        <member name="P:AdmPwd.Types.PasswordHistoryBase.KeyId">
-            <summary>
-            ID of RSA key that was used to encrypt the password
-            <para/>0 means that if password is not encrypted in AD
-            </summary>
-        </member>
-        <member name="T:AdmPwd.Types.SecurePasswordHistory">
-            <summary>
-            Descriptor of password history. Password stored as SecureString
-            <para/>Returned as a member of <see cref="T:AdmPwd.Types.PasswordInfo"/> class
-            </summary>
-        </member>
-        <member name="P:AdmPwd.Types.SecurePasswordHistory.Password">
-            <summary>
-            Password
-            </summary>
+            <param name="name">Name of account password is for
+            <para>For domain user accounts pass userPrincipalName</para>
+            <para>For local admin accounts pass computer name</para>
+            </param>
+            <param name="dn">Distinguished name of object password is for. Computer object or Domain User account.</param>
+            <param name="expiration">Expiration time of password</param>
+            <param name="keyId">Id of key that was used to encrypt the password stored in AD</param>
+            <param name="password">Password itself</param>
         </member>
         <member name="T:AdmPwd.Types.PasswordHistory">
             <summary>
             Descriptor of password history. Password stored as plain text
             <para/>Returned as a member of <see cref="T:AdmPwd.Types.PasswordInfo"/> class
+            </summary>
+        </member>
+        <member name="P:AdmPwd.Types.PasswordHistory.ValidSince">
+            <summary>
+            When password started to be valid
+            </summary>
+        </member>
+        <member name="P:AdmPwd.Types.PasswordHistory.ValidUntil">
+            <summary>
+            When password was reset/replaced
+            </summary>
+        </member>
+        <member name="P:AdmPwd.Types.PasswordHistory.KeyId">
+            <summary>
+            ID of RSA key that was used to encrypt the password
+            <para/>0 means that if password is not encrypted in AD
             </summary>
         </member>
         <member name="P:AdmPwd.Types.PasswordHistory.Password">
@@ -741,6 +684,15 @@
             </summary>
             <returns>Password string in plain text</returns>
         </member>
+        <member name="M:AdmPwd.Types.PasswordHistory.#ctor(System.DateTime,System.DateTime,System.UInt32,System.String)">
+            <summary>
+            Constructs the object.
+            </summary>
+            <param name="from">When password started to be valid</param>
+            <param name="to">When passord was replaced by newer one.</param>
+            <param name="keyId">Id of key that was used to encrypt the password</param>
+            <param name="password">Password itself</param>
+        </member>
         <member name="T:AdmPwd.Types.EnvironmentStatus">
             <summary>
             Descriptor of environment status
@@ -751,30 +703,40 @@
             List of managed domains
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.EnvironmentStatus.LicensedMachines">
+        <member name="P:AdmPwd.Types.EnvironmentStatus.LicensedMachines">
             <summary>
             License information: How many machines are licensed
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.EnvironmentStatus.MachineLicenseUsage">
+        <member name="P:AdmPwd.Types.EnvironmentStatus.MachineLicenseUsage">
             <summary>
             Percentage of license consumption
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.EnvironmentStatus.LicensedManagedAccounts">
+        <member name="P:AdmPwd.Types.EnvironmentStatus.LicensedManagedAccounts">
             <summary>
             License information: How many managed domain accounts are licensed
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.EnvironmentStatus.ManagedAccountsLicenseUsage">
+        <member name="P:AdmPwd.Types.EnvironmentStatus.ManagedAccountsLicenseUsage">
             <summary>
             Percentage of license consumption for managed domain accounts
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.EnvironmentStatus.LicenseExpires">
+        <member name="P:AdmPwd.Types.EnvironmentStatus.LicenseExpires">
             <summary>
             License information: When license expires
             </summary>
+        </member>
+        <member name="M:AdmPwd.Types.EnvironmentStatus.#ctor(System.UInt32,System.UInt32,System.UInt32,System.UInt32,System.DateTime)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="licensedMachines">Total amount of licensed machines</param>
+            <param name="machineLicenseUsage">Total amount of managed machines</param>
+            <param name="licensedAccounts">Total amount of licensed managed domain user accounts</param>
+            <param name="accountLicenseUsage">Total amount of managed user accounts</param>
+            <param name="licenseExpires">When the license expires</param>
         </member>
         <member name="T:AdmPwd.Types.DomainStatus">
             <summary>
@@ -784,25 +746,25 @@
             <para/>    Count of managed domain user accounts
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.DomainStatus.Name">
+        <member name="P:AdmPwd.Types.DomainStatus.Name">
             <summary>
             DNS name of domain
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.DomainStatus.ManagedMachines">
+        <member name="P:AdmPwd.Types.DomainStatus.ManagedMachines">
             <summary>
-            Number of managed machines - machines that have local admin password reported in AD and changed its password within last 60 days.
+            Count of managed machines - machines that have local admin password reported in AD and changed its password within last 60 days.
             <para/>Only those machines are counted as license consumers
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.DomainStatus.ManagedMachinesTotal">
+        <member name="P:AdmPwd.Types.DomainStatus.ManagedMachinesTotal">
             <summary>
-            Total number of managed machines - all machines that have local admin password reported in AD, regardless whether they're alive or not
+            Total count of managed machines - all machines that have local admin password reported in AD, regardless whether they're alive or not
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.DomainStatus.ManagedAccounts">
+        <member name="P:AdmPwd.Types.DomainStatus.ManagedAccounts">
             <summary>
-            Number of managed domain user accounts - user accounts that have their password managed by PDS
+            Count of managed domain user accounts - user accounts that have their password managed by PDS
             </summary>
         </member>
         <member name="M:AdmPwd.Types.DomainStatus.ToString">
@@ -810,6 +772,15 @@
             Overriden to show more information in PowerShell
             </summary>
             <returns>Name of domain and number of managed machines in domain</returns>
+        </member>
+        <member name="M:AdmPwd.Types.DomainStatus.#ctor(System.String,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="name">DNS name of domain</param>
+            <param name="managedMachines">Count of managed machines</param>
+            <param name="managedMachinesTotal">Total count of managed machines</param>
+            <param name="managedAccounts">Count of managed domain user accounts</param>
         </member>
         <member name="T:AdmPwd.Types.AutodiscoverException">
             <summary>
@@ -912,17 +883,17 @@
             Contains information about error encountered on PDS side
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.PDSException.IssueCode">
+        <member name="P:AdmPwd.Types.PDSException.IssueCode">
             <summary>
             Type of issue
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.PDSException.Issue">
+        <member name="P:AdmPwd.Types.PDSException.Issue">
             <summary>
             Textual description of issue
             </summary>
         </member>
-        <member name="F:AdmPwd.Types.PDSException.Details">
+        <member name="P:AdmPwd.Types.PDSException.Details">
             <summary>
             Detailed information about error
             </summary>
@@ -933,10 +904,13 @@
             <para>In such case, maximum 100 of ambiguous entries is returned in this member.</para>
             </summary>
         </member>
-        <member name="M:AdmPwd.Types.PDSException.#ctor(System.String,System.Exception)">
+        <member name="M:AdmPwd.Types.PDSException.#ctor(AdmPwd.Types.IssueType,System.String,System.String,System.String,System.Exception)">
             <summary>
             Constructor
             </summary>
+            <param name="issueType">Type of issue</param>
+            <param name="issue">Description of issue</param>
+            <param name="details">Detailed information</param>
             <param name="message">Exception message</param>
             <param name="ex">Inner exception</param>
         </member>
@@ -952,13 +926,27 @@
         </member>
         <member name="P:AdmPwd.Types.SupportedForest.User">
             <summary>
-            Credential to use when connecting to the forest
+            Credential to use by PDS when connecting to the forest
             </summary>
         </member>
         <member name="P:AdmPwd.Types.SupportedForest.KeyId">
             <summary>
-            ID of encryption key that was used to encrypt the password
+            ID of encryption key that was used to encrypt the password in config file
             </summary>
+        </member>
+        <member name="P:AdmPwd.Types.SupportedForest.OverrideForestName">
+            <summary>
+            Keep it on false unless you know what you're doing
+            </summary>
+        </member>
+        <member name="M:AdmPwd.Types.SupportedForest.#ctor(System.String,System.Net.NetworkCredential,System.Nullable{System.UInt32},System.Boolean)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="name">Dns name of the forest</param>
+            <param name="credential">Credential used by PDS to connect to forest</param>
+            <param name="keyId">ID of key used to protect password of credential in config file</param>
+            <param name="overrideForestName">When set to true, and configured forest name differs from real name, ignore real forest name and always use configured one</param>
         </member>
         <member name="T:AdmPwd.Types.PasswordComplexity">
             <summary>
@@ -1026,6 +1014,18 @@
             If not specified, PDS automatically choses latest key.
             </summary>
         </member>
+        <member name="M:AdmPwd.Types.ManagedAccountsContainer.#ctor(System.String,System.UInt32,System.UInt32,AdmPwd.Types.PasswordComplexity,System.Boolean,System.UInt32,System.Nullable{System.UInt32})">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="dn">DistingushedName of the container</param>
+            <param name="passwordAge">Desired max password age before rotating it</param>
+            <param name="pwdComplexity">Required password complexity</param>
+            <param name="pwdHistory">Whether or not to maintain password history</param>
+            <param name="pwdHistoryLength">How many records to keep in password history</param>
+            <param name="pwdLength">Required length of password, in chars</param>
+            <param name="keyId">KeyId for password encryption. Pass null to let PDS choose latest one</param>
+        </member>
         <member name="T:AdmPwd.Types.SidMapping">
             <summary>
             Contains information about how to map SIDs from untrusted forest during access checks.<br/>
@@ -1048,6 +1048,14 @@
             Description of SidMapping entry
             </summary>
         </member>
+        <member name="M:AdmPwd.Types.SidMapping.#ctor(System.Security.Principal.SecurityIdentifier,System.Security.Principal.SecurityIdentifier,System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="primarySid">SID from untrusted forest</param>
+            <param name="mappedSid">SID from PDS forest to map primary SID to</param>
+            <param name="description">Description of mapping</param>
+        </member>
         <member name="T:AdmPwd.Types.ManagedAccountsParameters">
             <summary>
             Parameters of managed domain accounts
@@ -1055,8 +1063,14 @@
         </member>
         <member name="P:AdmPwd.Types.ManagedAccountsParameters.ManagementInterval">
             <summary>
-            How often are managed domain accounts checked for expiration
+            How often are managed domain accounts checked for expiration, in seconds
             </summary>
+        </member>
+        <member name="M:AdmPwd.Types.ManagedAccountsParameters.#ctor(System.UInt32)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="managementInterval">How often are managed domain accounts checked for expiration, in seconds</param>
         </member>
         <member name="T:AdmPwd.Types.DnsParameters">
             <summary>
@@ -1068,10 +1082,9 @@
             Priority of SRV record
             </summary>
         </member>
-        <member name="P:AdmPwd.Types.DnsParameters.RegistrationInterval">
+        <member name="P:AdmPwd.Types.DnsParameters.Weight">
             <summary>
-            How often should PDS re-register the SRV record to prevent its expiration.
-            0 ... SRV record is not registered.
+            Weight of SRV record
             </summary>
         </member>
         <member name="P:AdmPwd.Types.DnsParameters.Ttl">
@@ -1079,15 +1092,26 @@
             TTL of SRV record
             </summary>
         </member>
+        <member name="P:AdmPwd.Types.DnsParameters.RegistrationInterval">
+            <summary>
+            How often should PDS re-register the SRV record in DNS to prevent its expiration. 
+            0 ... SRV record is not registered.
+            </summary>
+        </member>
         <member name="P:AdmPwd.Types.DnsParameters.UnregisterOnShutdown">
             <summary>
             Whether or not PDS autodiscover SRV record shall be removed from DNS when PDS instance stops.
             </summary>
         </member>
-        <member name="P:AdmPwd.Types.DnsParameters.Weight">
+        <member name="M:AdmPwd.Types.DnsParameters.#ctor(System.Byte,System.UInt16,System.UInt16,System.Int32,System.Boolean)">
             <summary>
-            Weight of SRV record
+            Default consructor
             </summary>
+            <param name="priority">Priority of SRV record</param>
+            <param name="weight">Weight of SRV record</param>
+            <param name="registrationInterval">How often should PDS re-register the SRV record in DNS</param>
+            <param name="ttl">TTL of SRV record</param>
+            <param name="unregOnShutdown">Whether PDS removes registered DNS record on service shutdown</param>
         </member>
         <member name="T:AdmPwd.Types.AccessControlParameters">
             <summary>
@@ -1109,10 +1133,19 @@
             Whether to include local group membership from user's domain (when it's different from PDS domain) to consideration when prforming access check.
             </summary>
         </member>
-        <member name="P:AdmPwd.Types.AccessControlParameters.MandatoryGroups">
+        <member name="F:AdmPwd.Types.AccessControlParameters.MandatoryGroups">
             <summary>
             SIDs of mandatory groups that caller must be member of so as password reads/resets are allowed
             </summary>
+        </member>
+        <member name="M:AdmPwd.Types.AccessControlParameters.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Security.Principal.SecurityIdentifier[])">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="honorAllExtended">Whether or not 'All Extended Rights' shall allow password read or reset</param>
+            <param name="honorFullControl">Whether or not 'Full Control' shall allow password read or reset</param>
+            <param name="honorRemoteLocalGroups">Whether to consider membership in local groups from computer domain during access check</param>
+            <param name="mandatoryGroups">SIDs of mandatory groups that caller must be member of</param>
         </member>
         <member name="T:AdmPwd.Types.LicenseParameters">
             <summary>
@@ -1143,6 +1176,16 @@
             <summary>
             DNS name of AD forest license is bound to
             </summary>
+        </member>
+        <member name="M:AdmPwd.Types.LicenseParameters.#ctor(System.String,System.DateTime,System.UInt32,System.UInt32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="licenseFile">Path to license file on PDS server</param>
+            <param name="expiration">When current license expires</param>
+            <param name="machines">How many computers are licensed</param>
+            <param name="domainAccounts">How many domain accounts are licensed</param>
+            <param name="forest">DNS name of AD forest license is bound to</param>
         </member>
         <member name="T:AdmPwd.Types.PdsEndpoint">
             <summary>
@@ -1204,6 +1247,16 @@
             <param name="weight">PDS weight. Currently not used</param>
             <param name="ttl">PDS TTL</param>
             <param name="forest">Forest serviced by this instance</param>
+        </member>
+        <member name="M:AdmPwd.Types.PdsEndpoint.MarkAsAlive">
+            <summary>
+            Marks PDS endpoint as alive
+            </summary>
+        </member>
+        <member name="M:AdmPwd.Types.PdsEndpoint.MarkAsDead">
+            <summary>
+            Marks PDS endpoint as dead
+            </summary>
         </member>
     </members>
 </doc>

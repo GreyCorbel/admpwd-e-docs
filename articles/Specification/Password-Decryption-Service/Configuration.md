@@ -21,9 +21,21 @@ SID Mappings:
 - Set-AdmPwdPdsSidMapping
 - Remove-AdmPwdPdsSidMapping
 
-It's strongly recommended to use PowerShell cmdlets above to modify configuration of Supported forests, Managed Accounts Containers and SID mappings.
+Access control configuration:
+- Set-AdmPwdPdsAccessControlParameters
 
-*Note*: Future releases will bring more PowerShell cmdlets for management of PDS configuration.
+Autodiscover DNS SRV record publishing:
+- Set-AdmPwdPdsDnsParameters
+
+PDS Admin Role management:
+- Move-AdmPwdPdsAdminRole
+
+License file location and name:
+- Set-AdmPwdPdsLicenseParameters
+
+It's strongly recommended to use PowerShell cmdlets to modify configuration of PDS, rather than editing PDS.config manually.
+
+All cmdlets above allow effective update of configuration of multiple PDS instances via pipelining, such as: ``` Get-AdmPwdPds | Set-AdmPwdPdsSupportedForest ... ```. This further simplifies configuration management and helps keep configuration standardized across machines.
 
 Table below specifies PDS service configurable parameters.
 

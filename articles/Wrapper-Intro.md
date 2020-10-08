@@ -13,13 +13,14 @@ All this without the need to know details about how to:
 * Connect to PDS interface and perform authentication
     * SDK connects to discovered PDS instance automatically and uses Windows authentication
 
-
 ## Getting Started
 To get started, add a reference to integration library to your project, and call static methods exposed by the library. Methods are pretty simple to use and map to high level functionality of the solution.
 
 Library is provided as NuGet package [`Greycorbel.AdmPwd-E.PDSWrapper`](https://www.nuget.org/packages/Greycorbel.AdmPwd-E.PDSWrapper/)
 
 For more information, see [Integration SDK](Specification/Management-Tools.md#integration-sdk)
+
+You can use source code of various tools as starting point - see [AdmPwd.E Client tools on GitHub](https://github.com/GreyCorbel/admpwd-e/tree/master/Clients)
 
 ## Version history
 
@@ -35,3 +36,5 @@ For more information, see [Integration SDK](Specification/Management-Tools.md#in
 |[v7.7.0.0](Version/v7.7.0.0.md)|14 Jul 2019|
 |[v7.7.1.0](Version/v7.7.1.0.md)|24 Dec 2019|
 |[v7.7.2.0](Version/v7.7.2.0.md)|01 Jan 2020|
+|[v7.7.3.0](Version/v7.7.3.0.md)|18 Apr 2020|
+|[v7.7.4.0](Version/v7.7.2.0.md)|14 Oct 2020|

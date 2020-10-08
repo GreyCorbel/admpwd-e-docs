@@ -1,19 +1,21 @@
 # PowerShell scripts and helpers
 This article shows various PowerShell one-liners, scripts and helpers that can help you operate the solution.
 
-Commands often use Powershell module S.DS.P for searching AD. Module can be downloaded from [GitHub](https://github.com/jformacek/S.DS.P)
+Commands often use Powershell module S.DS.P for searching AD. Module can be found on [GitHub](https://github.com/jformacek/S.DS.P) or installed directly from [PowerShell Gallery](https://www.powershellgallery.com/packages/S.DS.P) via command <code>Install-Module S.DS.P</code>
 
 ## List computers that report password to AD
 This script lists all computer accounts in domain that are managed by solution
 ```powershell
 #import PowerShell module
-Import-Module S.DS.P
+Import-Module S.DS.P -RequiredVersion 2.0.6
+#register attribute value convertor for password expiration timestamp
+Register-LdapAttributeTransform -Name filetime
 #establish LDAP connection to a domain controller from your domain
-$conn=Get-LdapConnection -LdapServer $env:LogonDomain
+$conn=Get-LdapConnection
 #get domain controller parameters
 $rootDSE=Get-RootDSE -LdapConnection $conn
-#load computer objects that have password expiration populated; conver password expiration to datetime and sort ascending by password expiration
-Find-LdapObject -LdapConnection $conn -searchFilter '(&(objectClass=computer)(ms-Mcs-AdmPwdExpirationTime=*))' -searchBase $rootDSE.defaultNamingContext -PropertiesToLoad 'cn','ms-Mcs-AdmPwdExpirationTime' | %{$_.'ms-Mcs-AdmPwdExpirationTime'=[DateTime]::FromFileTimeUtc($_.'ms-Mcs-AdmPwdExpirationTime');$_} | select cn,ms-Mcs-AdmPwdExpirationTime | sort ms-Mcs-AdmPwdExpirationTime
+#load computer objects that have password expiration populated; convert password expiration to datetime and sort ascending by password expiration
+Find-LdapObject -LdapConnection $conn -searchFilter '(&(objectClass=computer)(ms-Mcs-AdmPwdExpirationTime=*))' -searchBase $rootDSE.defaultNamingContext -PropertiesToLoad 'cn','ms-Mcs-AdmPwdExpirationTime' | select cn,ms-Mcs-AdmPwdExpirationTime | sort ms-Mcs-AdmPwdExpirationTime
 ```
 
 ## Get password update events from client activity log

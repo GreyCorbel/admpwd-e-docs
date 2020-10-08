@@ -1,12 +1,15 @@
 # Guides and How-To's
-`Updated: 18 Jul 2019`
+`Updated: 8 Oct 2020`
 
 This section contains various guides, command samples and explanations from Operations, Deployment and Troubleshooting areas.
+
 ## Install guide
 * [Install and configure the solution](Guides/Operations/Admin/Install.md)
 * [Upgrade from LAPS to AdmPwd.E](Guides/Operations/Admin/LAPS-Upgrade.md)
 * [Use Managed Domain Accounts feature](Guides/Operations/HowTo/Managed-Domain-Accounts.md)
 * [Manage passwords in multi-forest topology](Guides/Operations/HowTo/Multi-Forest.md)
+* [Use dedicated PDS instance just for collection of client activity](Guides/Operations/HowTo/PDS-for-reporting.md)
+
 ## Operations guide
 This manual describes daily tasks of users and administrators of the solution.  
 Daily tasks of users include:
@@ -22,5 +25,6 @@ Daily tasks of administrators include:
 * Maintenance of password history (if enabled) for managed accounts
 
 Tasks are described in respective sections of this guide.
+
 ## How To's
 How To section contains various tips, tricks and code/script samples how to use solution even more effectively.

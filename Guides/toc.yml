@@ -9,14 +9,16 @@
     href: ../articles/Guides/Operations/Admin/LAPS-Upgrade.md
   - name: Managed Domain Accounts
     href: ../articles/Guides/Operations/HowTo/Managed-Domain-Accounts.md
-  - name: Multi-forest deployment
-    href: ../articles/Guides/Operations/HowTo/Multi-Forest.md
 - name: How To's
   items:
   - name: PowerShell Helpers
     href: ../articles/Guides/Operations/HowTo/PowerShell-Helpers.md
   - name: Usage on non-domain joined machines
     href: ../articles/Guides/Operations/HowTo/Usage-Non-Domain-PC.md
+  - name: Multi-forest deployment
+    href: ../articles/Guides/Operations/HowTo/Multi-Forest.md
+  - name: PDS dedicated for client log colection
+    href: ../articles/Guides/Operations/HowTo/PDS-for-reporting.md
 
 
 

@@ -1,5 +1,6 @@
 ﻿# Technical specification
-`Updated: 1.1.2020`  
+`Updated: 8 Oct 2020`  
+
 Solution consists of the following components:
 * Client-side management runtime
 * Server-side management service (password decryption service, or PDS)

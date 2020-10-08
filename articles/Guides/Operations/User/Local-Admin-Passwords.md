@@ -23,7 +23,7 @@ What happens if a user who hasn’t been granted rights to see the local Adminis
 
 *Note*: If they have installed the RSAT tools and run Active Directory Users and Computers (ADUC) to view the password it will show as <not set>. 
 
-*Note*: Even for users with permissions to read the content of the attribute `ms-MCS-AdmPwd` (event members of Domain Admins) it is not possible to know the passowrd directly in AD as long as password is stored encrypted - They can only see encrypted value for password rather than actual password. This is a great advantage compared to Microsoft LAPS: Password encrzption significantly decreases the chance for password leak due to permission misconfigurations.
+*Note*: Even for users with permissions to read the content of the attribute `ms-MCS-AdmPwd` (event members of Domain Admins) it is not possible to know the passowrd directly in AD as long as password is stored encrypted - They can only see encrypted value for password rather than actual password. This is a great advantage compared to Microsoft LAPS: Password encryption significantly decreases the chance for password leak due to permission misconfigurations.
 
 This information is not seen because only the Decryption Service can read the password. Membership in the Password Readers group tells the service that it is allowed to reveal the password to the user.
 
@@ -40,7 +40,7 @@ If you want to manually convert it use this command:
 
 
 ## Retrieving passwords with PowerShell
-You can also get the password using PowerShell. You may need to run Import-module AdmPwd.PS if this is a new window.
+You can also get the password using PowerShell. You may need to run ``` Import-module AdmPwd.PS ``` if this is a new window.
 
 This command retrieves password for a computer and shows password history:
 ``` PowerShell
