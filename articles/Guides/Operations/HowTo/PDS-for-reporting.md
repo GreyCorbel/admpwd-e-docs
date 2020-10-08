@@ -14,7 +14,5 @@ This setup is possible and actually really simple. You just install PDS instance
 ## Requirements
 Only thing you will have to do is to prevent this PDS instance register its Autodiscover SRV record in DNS. This is because SRV records may be used by management tools to discover instance of PDS, and we do not want management tools to use this very instance for normal operation. To disable autodiscover SRV record registration, set RegistrationInterval to 0 in PDS.config file and restart the PDS service.
 
-See [PDS Configuration specification][1] for details on PDS configuration parameters and cmdlets that manage the configuration.
-
-[1]: /Articles/Specification/Password-Decryption-Service/Configuration.md
+See [PDS Configuration specification](~/articles/Specification/Password-Decryption-Service/Configuration.md) for details on PDS configuration parameters and cmdlets that manage the configuration.
 
