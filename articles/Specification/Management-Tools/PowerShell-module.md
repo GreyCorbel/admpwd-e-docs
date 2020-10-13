@@ -136,10 +136,8 @@ No special permission needed
 Not audited</td>
 </tr>
 <tr>
-<td>Get-AdmPwdKeyAdminRoleName</td>
+<td>Get-AdmPwdPdsAdminRole</td>
 <td>Gets the name of AD group implementing PDS Admin role.
-
-*Note*: In next release, the cmdlet will be renamed to Get-AdmPwdPdsAdminRoleName
 </td>
 <td>Communicates with PDS
 

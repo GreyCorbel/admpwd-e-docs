@@ -37,4 +37,4 @@ You can use source code of various tools as starting point - see [AdmPwd.E Clien
 |[v7.7.1.0](Version/v7.7.1.0.md)|24 Dec 2019|
 |[v7.7.2.0](Version/v7.7.2.0.md)|01 Jan 2020|
 |[v7.7.3.0](Version/v7.7.3.0.md)|18 Apr 2020|
-|[v7.7.4.0](Version/v7.7.2.0.md)|14 Oct 2020|
+|[v7.7.4.1](Version/v7.7.4.1.md)|14 Oct 2020|
