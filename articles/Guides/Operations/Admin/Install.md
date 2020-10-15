@@ -33,7 +33,7 @@ Then run the following PowerShellcommand:
 Output shows details on operations performed - for bot AD schema update AND Extended Rights registration
 
 ### LDF files
-There are 2 LDF files:
+This is alternate way of AD schema extension - you can use it in case that for whatever reason, AD schema extension via PowerSHell is not possible. There are 2 LDF files to be used:
 * For [AD Schema changes](https://gcstoragedownload.blob.core.windows.net/download/AdmPwd.E/Schema/AdmPwd_Full.zip) - imports new attributes to AD schema and makes them available on computer and user object classes
 * For [Extended Rights definition](https://gcstoragedownload.blob.core.windows.net/download/AdmPwd.E/Schema/ExtendedRights.zip) - imports new AD rights definition to AD configuration partition
 
@@ -49,7 +49,7 @@ Files can be imported from command line on Domain Controller by ldifde.exe tool:
 
 This step ensures that PDS service account has appropriate permissions on AD trees where managed objects are located.
 
-By default, PDS installs under NETWORK SERVICE asccount, but can be also operated under domain account or Group Managed Service Account. Steps in this guide assume that PDS is using NETWORK SERVICE account.
+By default, PDS installs under NETWORK SERVICE asccount, but can be also operated under domain account or Group Managed Service Account. Steps and command samples in this guide assume that PDS is using NETWORK SERVICE account and is running on AD member server.
 
 Best practice is to create AD group named "PDS Servers" (or any name confirming to naming convention for your AD) and make computer accounts of servers that are planned to run PDS service a members of this group.
 
@@ -63,13 +63,15 @@ Permissions are granted using `AdmPwd.PS` PowerShell management module. Sample s
 
 ```PowerShell
 # Permission to read and write ms-MCS-* attributes on computers
+#Persmission to generally read object atributes (PDS reads ACL, objectClass and objectSid attributes during access control check)
 Set-AdmPwdPdsPermission -Identity ManagedMachines -AllowedPrincipals "MYDOMAIN\PDS Servers"
 
 # Permission to retrieve passwords from deleted computer objects
-# Note: You may need to take ownership of cn=Deleted Objects,DC=MaDomain,DC=com to be able to perform delegation
+# Note: You may need to take ownership of cn=Deleted Objects,DC=MaDomain,DC=com to be able to perform this delegation
 Set-AdmPwdPdsDeletedObjectsPermission -DomainDnsName mydomain.com -AllowedPrincipals "MYDOMAIN\PDS Servers"
 
-#Permissions to manage password of managed domain accounts
+#Permissions to read and manage password of managed domain accounts
+#Persmission to generally read object atributes (PDS reads ACL, objectClass and objectSid attributes during access control check)
 Set-AdmPwdPdsManagedAccountsPermission -Identity AdmPwdManagedAccounts -AllowedPrincipals "MYDOMAIN\PDS Servers"
 
 ```
@@ -81,8 +83,8 @@ Sample delegation script below has the following assumptions:
 * Managed machines are in AD subtree under 'ManagedMachines'
 * Managed domain accounts are in AD under subtree 'AdmPwdManagedAccounts
 * DNS domain name is `MyDomain.com`; NetBIOS domain name is `MYDOMAIN`
-* There is AD group that allows password reads: 'Password Readers'
-* There is AD group that allows password resets: 'Password resetters'
+* There is AD group that will be delegated the permission to read passwords: 'Password Readers'
+* There is AD group tthat will be delegated the permission to reset passwords: 'Password resetters'
 
 ```PowerShell
 #Delegate Read password permission for managed machines
@@ -100,10 +102,10 @@ Set-AdmPwdReadPasswordPermission -Identity "cn=john_admin,ou=AdmPwdManagedAccoun
 ```
 
 ## Permissions for managed computers to report passwords to AD
-This makes sure that managed permissions can write passwords of managed local accounts to attributes of own computer accounts.
+This makes sure that managed machines can write passwords of managed local admin accounts to attributes of own computer accounts.
 
 ```PowerShell
-#Allow mydomain\john to read password of account mydomain\john_admin
+#Allow computer to report its own password to AD
 Set-AdmPwdComputerSelfPermission -Identity ManagedMachines
 ```
 

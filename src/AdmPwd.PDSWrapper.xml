@@ -155,6 +155,15 @@
       <para>Call is audited</para>
     </remarks>
         </member>
+        <member name="M:AdmPwd.PDSUtils.PdsWrapper.GetPdsAdminRoleName(AdmPwd.Types.PdsEndpoint)">
+            <summary>
+      Calls PDS to retrieve name of AD group that implements PDS Admin role. Members of the group hold PDS Admin role and can manage configuration of PDS.
+    </summary><returns>Returns name of AD group that is configured as PDS Admin role group</returns><remarks>
+      <para>By default, this role is held by Enterprise Admins group. Role assignment can be changed in PDS configuration file.</para>
+      <para>No specific permissions required</para>
+      <para>Call is not audited</para>
+    </remarks>
+        </member>
         <member name="M:AdmPwd.PDSUtils.PdsWrapper.TransferPdsAdminRole(AdmPwd.Types.PdsEndpoint,System.String)">
             <summary>
       Transfers PDS Admin role to security principal (user or group)
@@ -377,15 +386,6 @@
       </para>
        <para>Supported key sizes are configured in PDS configuration file.</para>
        <para>RSA CSP used by solution supports key sizes up to 16384 bits in 8-bit increments on Windows OS.</para>
-       <para>No specific permissions required</para>
-       <para>Call is not audited</para>
-    </remarks>
-        </member>
-        <member name="M:AdmPwd.PDSUtils.PdsWrapper.GetKeyAdminsRoleName">
-            <summary>
-       Calls PDS to retrieve name of AD group that implements Key Admin role. Members of the group hold Key Admin role on PDS
-    </summary><returns>Returns name of AD group that is configured on PDS as Key Admin role group</returns><remarks>
-       <para>By default, this role is held by Enterprise Admins group. Role assignment can be changed in PDS configuration file.</para>
        <para>No specific permissions required</para>
        <para>Call is not audited</para>
     </remarks>
@@ -993,11 +993,6 @@
             Required password complexity
             </summary>
         </member>
-        <member name="P:AdmPwd.Types.ManagedAccountsContainer.PasswordHistory">
-            <summary>
-            Whether or not to maintain password history. Typically it's not needed
-            </summary>
-        </member>
         <member name="P:AdmPwd.Types.ManagedAccountsContainer.PasswordHistoryLength">
             <summary>
             How many records to keep in password history
@@ -1014,14 +1009,13 @@
             If not specified, PDS automatically choses latest key.
             </summary>
         </member>
-        <member name="M:AdmPwd.Types.ManagedAccountsContainer.#ctor(System.String,System.UInt32,System.UInt32,AdmPwd.Types.PasswordComplexity,System.Boolean,System.UInt32,System.Nullable{System.UInt32})">
+        <member name="M:AdmPwd.Types.ManagedAccountsContainer.#ctor(System.String,System.UInt32,System.UInt32,AdmPwd.Types.PasswordComplexity,System.UInt32,System.Nullable{System.UInt32})">
             <summary>
             Default constructor
             </summary>
             <param name="dn">DistingushedName of the container</param>
             <param name="passwordAge">Desired max password age before rotating it</param>
             <param name="pwdComplexity">Required password complexity</param>
-            <param name="pwdHistory">Whether or not to maintain password history</param>
             <param name="pwdHistoryLength">How many records to keep in password history</param>
             <param name="pwdLength">Required length of password, in chars</param>
             <param name="keyId">KeyId for password encryption. Pass null to let PDS choose latest one</param>
