@@ -37,7 +37,7 @@ This is alternate way of AD schema extension - you can use it in case that for w
 * For [AD Schema changes](https://gcstoragedownload.blob.core.windows.net/download/AdmPwd.E/Schema/AdmPwd_Full.zip) - imports new attributes to AD schema and makes them available on computer and user object classes
 * For [Extended Rights definition](https://gcstoragedownload.blob.core.windows.net/download/AdmPwd.E/Schema/ExtendedRights.zip) - imports new AD rights definition to AD configuration partition
 
-Files can be imported from command line on Domain Controller by ldifde.exe tool:  
+Files can be imported from command line on Domain Controller by `ldifde.exe` tool:  
 
 `ldifde -i -f AdmPwd_Full.ldf -c "cn=X" "#schemaNamingContext" -v`  
 *Note*: This command requires running as Schema Admin  
