@@ -156,6 +156,7 @@ Total licenses needed: %2
 When this happens, PDS may randomly refuse to get/reset password for a computer.  
 
 Probability of refusing an operation increases with number of unlicensed computers  
+
 *Note*: Probability is computed as follows:  
 `# of unlicensed computers / # of all computers`</td>
 </tr>
@@ -171,8 +172,12 @@ Current forest: %2</td>
 
 This event is logged when PDS finds out that it runs in different AD forest than licensed.
 License is issued for specific AD forest where PDS is installed in.  
+
 *Note*: PDS can support multiple AD forests, but it needs to have license for own forest and enough of licensed machines and managed domain accounts all forests where managed computers and domain accounts are.  
-When there is not license file for PDS local forest, PDS switches into freeware mode until license for proper forest is provided by an administrator.
+
+*Note*: When license file was issued for forest GUID, this event shows GUID in forest names rather than forest DNS names.  
+
+When PDS finds that license file was issued for different than PDS local forest, PDS switches into freeware mode until license for proper forest is provided by an administrator.
 </td>
 </tr>
 <tr>

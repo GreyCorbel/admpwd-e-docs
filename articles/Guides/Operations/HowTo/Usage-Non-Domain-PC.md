@@ -37,7 +37,7 @@ To start with AMA, you just need:
 
 Now users will be able to retrieve/reset password only after they authenticate with the certificate - username/password authentication will not allow them password retrieval/reset.
 
-### Multiple environments mamanged from single PC
+### Multiple environments managed from single PC
 Consider the following scenario:
 * You are vendor who manages environment of multiple customers
 * Each customer has own AD forest with instance of PDS
