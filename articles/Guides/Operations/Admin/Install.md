@@ -131,11 +131,19 @@ If you prefer unattended installation, this is a command line that installs Fat 
 
 ## Configuration of GPO
 Configuration of GPO is done using solution specific ADMX templates. Templates are installed from `AdmPwd.E.Tools.Setup.<platform>.msi` to standard folder `%SystemRoot%\PolicyDefinitions`
-Install them on machine where you perform GPO management. If you use Centralized POlicy Store in your organization, copy the respective files to folder that implements your Central policy store. Files are:  
+Install them on machine where you perform GPO management. If you use Centralized Policy Store in your organization, copy the respective files to folder that implements your Central policy store. Files are:  
 ```
 AdmPwd.E.admx
 en-US\AdmPwd.E.adml
 ```
+Please, be aware of to enable Password Encryption feature follow these steps as prerequisites:
+
+1. generate new encryption/decription key pair in PDS using: 
+`New-AdmPwdKeyPair -KeySize 2048`
+*(Than you are able to retrieve public key to put it into GPO password encryption template)*
+
+2. retrieve public key to your clipboard using:
+`(Get-AdmPwdPublicKey -KeyId).Key | clip`
 
 *Note*: On Windows Nano Server, GPO is not there, any you have to use PowerShell DSC or other trechnology to implement registry configuration. There is sample PowerShell DSC configuration in Windows Nano Server install package that shows possible configuration setings.
 
