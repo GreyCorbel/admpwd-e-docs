@@ -139,8 +139,8 @@ en-US\AdmPwd.E.adml
 Please, be aware of to enable Password Encryption feature follow these steps as prerequisites:
 
 1. generate new encryption/decription key pair in PDS using: 
-`New-AdmPwdKeyPair -KeySize 2048`
-*(Than you are able to retrieve public key to put it into GPO password encryption template)*
+`New-AdmPwdKeyPair -KeySize 2048`  
+*(Then you are able to retrieve public key to put it into GPO password encryption template)*
 
 2. retrieve public key to your clipboard using:
 `(Get-AdmPwdPublicKey -KeyId).Key | clip`
