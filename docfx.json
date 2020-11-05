@@ -21,7 +21,8 @@
   "build": {
     "template": [
       "default",
-      "default-widescreen"
+      "default-widescreen",
+      "docfx-tmpl/src"
     ],
     "content": [
       {
