@@ -51,6 +51,12 @@ AdmPwd.E provides GPO admin templates that allow to configure and distribute sol
 LAPS and AdmPwd.E configuration is fully compatible (LAPS GPO is subset of AdmPwd.E GPO) with the following exception: LAPS defines Password Age parameter value in days, while AdmPwd.E defines Password Age in hours. This means that while AdmPwd.E continues using other GPO parameters already defined for LAPS, you are required to configure Password Age GPO again for AdmPwd.E.
 
 *Note:* In case you are going to enable password encryption feature you have to follow steps mentioned in [Configuration of GPO](Install.md#configuration-of-gpo) chapter.
+#### LAPS.E encryption/decryption key usage
+
+When you upgrade LAPS.E to AdmPwd.E there is also possibility to read password history encrypted by LAPS.E key using AdmPWd.E management tools. You just need to: 
+1) copy old LAPS.E key located on PDS server in path: %ProgramFiles%\AdmPwd\Svc\CryptoKeyStorage to new instance of AdmPwd.E PDS server to following path: %ProgramFiles%\AdmPwd\PDS\CryptoKeyStorage.
+2) rename key files to new AdmPwd.E key naming convention like this: (n)_Key.dat. The value (n) is equal to the maximum value of the key (m) contained in the %ProgramFiles% \ AdmPwd \ PDS \ CryptoKeyStorage directory increased by one. So it applies n = m + 1.
+3) restart AdmPwd.E.PDS service in Win32 services on PDS server.
 
 ### Distribute client management runtime
 At this moment, you have configured all necessary settings on management infrastructure side. Users of solution still can use the solution - AdmPwd.E management tools fully support data stored in AD by LAPS management runtime and allow reading and resetting of passwords managed by LAPS. However, to use new functionalities brought by AdmPwd.E, you are required to upgrade management runtime on managed clients.
