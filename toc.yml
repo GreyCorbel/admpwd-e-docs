@@ -6,4 +6,7 @@
   homepage: articles/Guides.md
 - name: PDS Wrapper API docs
   href: Reference/
+- name: PowerShell Module
+  href: AdmPwd.PS/
+  homepage: AdmPwd.PS/AdmPwd.PS.md
 

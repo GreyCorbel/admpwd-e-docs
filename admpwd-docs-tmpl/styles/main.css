@@ -1,0 +1,16 @@
+.sidetoc,
+body .toc,
+.sidefilter,
+.sidetoggle { 
+  background-color: #f9fbe7; 
+  width: 350px
+}
+
+.article.grid-right {
+  margin-left: 370px;
+}
+
+.collapse.in,
+.collapsing {
+  text-align: left;
+}

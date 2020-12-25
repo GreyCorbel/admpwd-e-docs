@@ -1,0 +1,89 @@
+- name: Module commands
+  href: AdmPwd.PS.md
+  items:
+    - name: Add-AdmPwdPdsManagedAccountsContainer
+      href: Add-AdmPwdPdsManagedAccountsContainer.md
+    - name: Add-AdmPwdPdsSidMapping
+      href: Add-AdmPwdPdsSidMapping.md
+    - name: Add-AdmPwdPdsSupportedForest
+      href: Add-AdmPwdPdsSupportedForest.md
+    - name: Get-AdmPwdADSchema
+      href: Get-AdmPwdADSchema.md
+    - name: Get-AdmPwdCredential
+      href: Get-AdmPwdCredential.md
+    - name: Get-AdmPwdEnvironmentStatus
+      href: Get-AdmPwdEnvironmentStatus.md
+    - name: Get-AdmPwdKeySize
+      href: Get-AdmPwdKeySize.md
+    - name: Get-AdmPwdManagedAccountPassword
+      href: Get-AdmPwdManagedAccountPassword.md
+    - name: Get-AdmPwdPassword
+      href: Get-AdmPwdPassword.md
+    - name: Get-AdmPwdPds
+      href: Get-AdmPwdPds.md
+    - name: Get-AdmPwdPdsAccessControlParameters
+      href: Get-AdmPwdPdsAccessControlParameters.md
+    - name: Get-AdmPwdPdsAdminRole
+      href: Get-AdmPwdPdsAdminRole.md
+    - name: Get-AdmPwdPdsDnsParameters
+      href: Get-AdmPwdPdsDnsParameters.md
+    - name: Get-AdmPwdPdsLicenseParameters
+      href: Get-AdmPwdPdsLicenseParameters.md
+    - name: Get-AdmPwdPdsManagedAccountsContainer
+      href: Get-AdmPwdPdsManagedAccountsContainer.md
+    - name: Get-AdmPwdPdsManagedAccountsParameters
+      href: Get-AdmPwdPdsManagedAccountsParameters.md
+    - name: Get-AdmPwdPdsSidMapping
+      href: Get-AdmPwdPdsSidMapping.md
+    - name: Get-AdmPwdPdsSupportedForest
+      href: Get-AdmPwdPdsSupportedForest.md
+    - name: Get-AdmPwdPublicKey
+      href: Get-AdmPwdPublicKey.md
+    - name: Get-AdmPwdPublicKeys
+      href: Get-AdmPwdPublicKeys.md
+    - name: Get-AdmPwdUserPermissions
+      href: Get-AdmPwdUserPermissions.md
+    - name: Move-AdmPwdPdsAdminRole
+      href: Move-AdmPwdPdsAdminRole.md
+    - name: New-AdmPwdKeyPair
+      href: New-AdmPwdKeyPair.md
+    - name: Remove-AdmPwdPdsManagedAccountsContainer
+      href: Remove-AdmPwdPdsManagedAccountsContainer.md
+    - name: Remove-AdmPwdPdsSidMapping
+      href: Remove-AdmPwdPdsSidMapping.md
+    - name: Remove-AdmPwdPdsSupportedForest
+      href: Remove-AdmPwdPdsSupportedForest.md
+    - name: Reset-AdmPwdManagedAccountPassword
+      href: Reset-AdmPwdManagedAccountPassword.md
+    - name: Reset-AdmPwdPassword
+      href: Reset-AdmPwdPassword.md
+    - name: Set-AdmPwdComputerSelfPermission
+      href: Set-AdmPwdComputerSelfPermission.md
+    - name: Set-AdmPwdPdsAccessControlParameters
+      href: Set-AdmPwdPdsAccessControlParameters.md
+    - name: Set-AdmPwdPdsDeletedObjectsPermission
+      href: Set-AdmPwdPdsDeletedObjectsPermission.md
+    - name: Set-AdmPwdPdsDnsParameters
+      href: Set-AdmPwdPdsDnsParameters.md
+    - name: Set-AdmPwdPdsLicenseParameters
+      href: Set-AdmPwdPdsLicenseParameters.md
+    - name: Set-AdmPwdPdsManagedAccountsContainer
+      href: Set-AdmPwdPdsManagedAccountsContainer.md
+    - name: Set-AdmPwdPdsManagedAccountsParameters
+      href: Set-AdmPwdPdsManagedAccountsParameters.md
+    - name: Set-AdmPwdPdsManagedAccountsPermission
+      href: Set-AdmPwdPdsManagedAccountsPermission.md
+    - name: Set-AdmPwdPdsPermission
+      href: Set-AdmPwdPdsPermission.md
+    - name: Set-AdmPwdPdsSidMapping
+      href: Set-AdmPwdPdsSidMapping.md
+    - name: Set-AdmPwdPdsSupportedForest
+      href: Set-AdmPwdPdsSupportedForest.md
+    - name: Set-AdmPwdReadPasswordPermission
+      href: Set-AdmPwdReadPasswordPermission.md
+    - name: Set-AdmPwdResetPasswordPermission
+      href: Set-AdmPwdResetPasswordPermission.md
+    - name: Update-AdmPwdADSchema
+      href: Update-AdmPwdADSchema.md
+    - name: Update-AdmPwdPasswordHistory
+      href: Update-AdmPwdPasswordHistory.md

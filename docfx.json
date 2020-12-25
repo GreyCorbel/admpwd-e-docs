@@ -22,7 +22,8 @@
     "template": [
       "default",
       "default-widescreen",
-      "docfx-tmpl/src"
+      "docfx-tmpl/src",
+      "admpwd-docs-tmpl"
     ],
     "content": [
       {
@@ -44,8 +45,14 @@
             "Reference/**.yml",
             "Guides/**.yml"
           ]
-      }
-    ],
+      },
+      {
+        "files": [
+          "AdmPwd.PS/**.md",
+          "AdmPwd.PS/**.yml"
+        ]
+    }
+  ],
     "resource": [
       {
         "files": [
