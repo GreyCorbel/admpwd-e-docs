@@ -5,6 +5,6 @@ Documentation provides detailed information about AdmPwd.E features and implemen
 * [Functional specification](articles/Specification.md): Specs for solution components. Implementation, configuration, logging, etc.
 * [Guides and How-To's](articles/Guides.md): Various user and admin guides
 * [PDS Integration library](articles/Wrapper-Intro.md): Reference documentation on PDS integration SDK
-* [AdmPwd.PS PowerShell Module(AdmPwd.PS/AdmPwd.PS.md): Reference documentation on PowerShell Management module 
+* [AdmPwd.PS PowerShell Module](AdmPwd.PS/AdmPwd.PS.md): Reference documentation on PowerShell Management module 
 
 

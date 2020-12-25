@@ -4,7 +4,7 @@
       "src": [
         {
           "files": [
-            "src/*.dll"
+            "Reference/src/*.dll"
           ],
           "exclude": [
             "**/bin/**",
@@ -22,8 +22,7 @@
     "template": [
       "default",
       "default-widescreen",
-      "docfx-tmpl/src",
-      "admpwd-docs-tmpl"
+      "Templates/admpwd-docs-tmpl"
     ],
     "content": [
       {
