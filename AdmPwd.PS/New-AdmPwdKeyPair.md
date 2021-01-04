@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AdmPwdKeyPair
 
 ## SYNOPSIS
-Generates new key pair in Password Decryptor service
+Generates new key pair in Password Decryption service
 
 ## SYNTAX
 

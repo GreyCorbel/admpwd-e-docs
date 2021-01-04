@@ -88,6 +88,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### AdmPwd.Types.PasswordInfo
 ### AdmPwd.Types.SecurePasswordInfo
 ## NOTES
-Caller needs to be delegated the permission to read password for given managed domain user account. If this permission is not granted, Access Denied error is returned
+Caller needs to be delegated the permission to read password for given managed domain user account. If this permission is not granted, Access Denied error is returned.
 
 ## RELATED LINKS

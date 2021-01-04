@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AdmPwdCredential
 
 ## SYNOPSIS
-Returns credential for local admin or managed domain account, and optionally schedules reset of retrieved password.
+Returns credential of managed domain account, and optionally schedules reset of retrieved password.
 
 ## SYNTAX
 ```powershellGet-AdmPwdCredential [-UserName] <String> [[-ForestDnsName] <String>] [[-ResetAfter] <DateTime>]
@@ -37,12 +37,12 @@ Get-AdmPwdCredential -AccountName:MyAccount -ForestDnsName mydomain.com
 Requests credentials with password for domain account MyAccount from domain mydomain.com
 
 _Note_: In this case, ForestDnsName here is used as domain name where the account resides.
-Command looks for account in specified domain. Domain must be domain from one of AD forests supported by PDS
+Command looks for the account in specified domain. Domain must be domain from one of AD forests supported by PDS
 
 ## PARAMETERS
 
 ### -UserName
-Name of the local account or managed domain account to return credential for
+Name of managed domain account to return credential for
 
 ```yaml
 Type: String
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 
 ### -ResetAfter
 Time when password reset shall be scheduled. When omitted, password reset is not scheduled.
-Note that password is changed during next PDS management cycle after requested date/time (for managed domain accounts) or next GPO refresh (for local accounts).  
+Note that password is changed during next PDS management cycle after requested date/time (every 10 minutes by default).  
 Format of the date/time accepted is the same as in active regional settings
 
 ```yaml

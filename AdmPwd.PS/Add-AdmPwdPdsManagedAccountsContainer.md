@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AdmPwdPdsManagedAccountsContainer
 
 ## SYNOPSIS
-Adds configuration of AD container with accounts with automatically managed passwords to configuration of PDS.
+Adds configuration of AD container with user accounts with automatically managed passwords to configuration of PDS.
 
 ## SYNTAX
 
@@ -24,12 +24,13 @@ Adds configuration of AD container with accounts with automatically managed pass
 ```
 
 ## DESCRIPTION
-PDS manages managed domain accounts in specified AD containers (typically OUs).  
-Each container has specific configuration for passwords (complexity, age, encryption key, etc.).  
-All user accounts in container are subject of automatic password configuration.  
-Configuration of managed accounts containers is stored in PDS configuration file.
+PDS can manage (regularly rotate and reset on demand) password of domain user accounts in specified AD containers (typically OUs).  
+Each AD container can have specific configuration for passwords (complexity, age, encryption key, etc.).  
+All user accounts in AD container are subject of automatic password management.  
+Configuration of managed accounts containers is stored in PDS configuration file. Configuration in PDS config file is managed by this command.
 
-Passwords are encrypted by encryption key with given KeyID. If no KeyID provided, passwords are automatically encrypted by most recent encryption key available on PDS at a time of password encryption. This provides easy touse encryption key rollover.
+Passwords are encrypted by encryption key with given KeyID. If no KeyID provided, passwords are automatically encrypted by most recent encryption key available on PDS at a time of password encryption.
+This provides easy to use encryption key rollover.
 
 ## EXAMPLES
 

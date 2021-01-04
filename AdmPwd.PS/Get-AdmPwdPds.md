@@ -21,7 +21,6 @@ Lists all discovered PDS instances along with their parameters.
 ## EXAMPLES
 
 ### Example 1
-@{paragraph=PS C:\\\>}
 
 ```powershell
 Get-AdmPwdPds

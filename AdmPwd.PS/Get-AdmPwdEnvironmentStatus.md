@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AdmPwdEnvironmentStatus
 
 ## SYNOPSIS
-Returns status information about environment managed by the solution
+Returns status information about environment managed by the solution.
 
 ## SYNTAX
 ```powershell
@@ -15,7 +15,11 @@ Get-AdmPwdEnvironmentStatus [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet returns license status and list of all domains managed by solution, along with number of machines managed for each domain
+This cmdlet returns the following information:  
+- total number of licensed machines for admin password management and current license consumption
+- total number of licensed managed domain user accounts and current license consumption
+- license expiration
+- list of all AD domains in all supported AD forest, each domain with number of managešd computers and domain user accounts
 
 ## EXAMPLES
 
@@ -37,5 +41,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### AdmPwd.Types.EnvironmentStatus
 
 ## NOTES
-
+Caller does not have to be PDS administrator. Call is not audited.
 ## RELATED LINKS

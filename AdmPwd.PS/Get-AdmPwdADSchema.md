@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AdmPwdADSchema
 
 ## SYNOPSIS
-Gets AD schema attributes for the solution and their schema GUIDs
+Gets AD schema attributes for the solution and their schema GUIDs.
 
 ## SYNTAX
 
@@ -16,8 +16,8 @@ Get-AdmPwdADSchema [[-ForestDnsName] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets AD schema attributes for the solution.
-  Cmdlet is useful when you setup auditing on AD level and need to know GUIDs of attributes for definition of event filters.
+Gets AD schema attributes for the solution.  
+Cmdlet is useful when you setup auditing on AD level and need to know GUIDs of attributes for definition of event filters.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ Gets AD schema attributes for the solution.
 Get-AdmPwdADSchema
 ```
 
-Gets solution specific attributes from AD schema
+Gets solution specific attributes from AD schema.
 
 ## PARAMETERS
 
@@ -55,5 +55,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AdmPwd.Types.AdmPwdSchemaAttribute
 ## NOTES
-
+Caller's identity is used to authenticate the request, even when reaching to remote forest.
 ## RELATED LINKS

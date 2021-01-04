@@ -25,13 +25,14 @@ Add-AdmPwdPdsSidMapping [-PdsName] <String> [-PrimarySid] <SecurityIdentifier>
 
 ## DESCRIPTION
 PDS supports management of untrusted forests.
-However, for management of untrusted forests, the following prerequisites must be configured:
-
+However, for management of untrusted forests, the following prerequisites must be configured:  
 - Explicit credentials for PDS to use when accessing intrusted forest
 - Mapping of SID from untrusted forest to SIDs from PDS forests.
 
 SID mappings are used for access control - User who wants to read or reset password must have his/her own SID (own SID or SID of group he/she is member of) 'paired' with SID that has been delegated the permission for password read/reset in untrusted forest.
 SID mapping is used to establish this pairing of SIDs.
+
+For management of untrusted forest connection credentials, see command [Add-AdmPwdSupportedForest](./Add-AdmPwdSupportedForest.md)
 
 ## EXAMPLES
 

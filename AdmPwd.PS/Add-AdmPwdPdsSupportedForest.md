@@ -23,14 +23,14 @@ Add-AdmPwdPdsSupportedForest [-PdsName] <String> [-ForestName] <String> [[-Crede
 
 ## DESCRIPTION
 PDS supports management of untrusted forests.
-However, for management of untrusted forests, the following prerequisites must be configured:
-
-- Explicit credentials for PDS to use when accessing intrusted forest
+However, for management of untrusted forests, the following prerequisites must be configured:  
+- Explicit credentials for PDS to use when accessing untrusted forest
 - Mapping of SID from untrusted forest to SIDs from PDS forests.
 
-For management of untrusted AD forest, connection credentials are required.
-
+For management of untrusted AD forest, connection credentials are required.  
 For management of trusted AD forest, connection credentials are optional.
+For management of SID mappings for management of untrusted forest, see command [Add-AdmPwdSidMapping](./Add-AdmPwdSidMapping.md)
+
 
 ## EXAMPLES
 
@@ -42,8 +42,8 @@ $creds = Get-Credential
 Get-AdmPwdPds | Add-AdmPwdPdsSupportedForest -ForestName 'MyRemoteForest.com' $Credential $creds
 ```
 
-Gets list of all PDS instances discovered and adds definition of supported AD forest with explicit credentials.
-Credentials are encrypted in PDS configuration file by most recent PDS enryption key.
+Gets list of all PDS instances discovered and adds definition of supported AD forest with explicit connection credentials.
+Credentials are encrypted in PDS configuration file by most recent PDS enryption key. Connection credentials must have permissions delegated in untrusted forest via Set-AdmPwdPdsPermission command.
 
 ## PARAMETERS
 

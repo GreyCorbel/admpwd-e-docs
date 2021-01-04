@@ -23,7 +23,7 @@ Get-AdmPwdPdsAccessControlParameters [-PdsName] <String> [<CommonParameters>]
 
 ## DESCRIPTION
 PDS supports the following switches that influence access control decisions:
--  HonorFullControl: allows password reads/resets also to principals who have Full Control permission on object
+- HonorFullControl: allows password reads/resets also to principals who have Full Control permission on object
 - HonorAllExtendedRights: allows password reads/resets also to principals who have All Extended Rights permission on object
 - HonorLocalGroupsFromRemoteComputerDomain: In multi-domain AD forests, PDS reads local group membership of caller in domain to see if local group gives Read or Reset password permision, and honors such permissions.
 
@@ -83,5 +83,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Object representing parameters of PDS access control process.
 
 ## NOTES
-
+Caller does not have to be PDS admin. Call is not audited.
 ## RELATED LINKS

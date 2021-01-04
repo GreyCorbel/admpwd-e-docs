@@ -17,7 +17,7 @@ Get-AdmPwdPassword [-ComputerName] <String> [-IncludeHistory] [[-ForestDnsName] 
 
 ## DESCRIPTION
 Finds local admin password and password expiration timestamp for given computer.
-Optionally returns password history, if target computer is configured to maintain password history
+Optionally returns password history, if target computer is configured to maintain password history.
 
 ## EXAMPLES
 
