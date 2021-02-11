@@ -19,6 +19,10 @@
     href: ../articles/Guides/Operations/HowTo/Multi-Forest.md
   - name: PDS dedicated for client log colection
     href: ../articles/Guides/Operations/HowTo/PDS-for-reporting.md
+  - name: PDS High availability
+    href: ../articles/Guides/Operations/HowTo/PDS-multi-instance.md
+    
+
 
 
 

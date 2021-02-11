@@ -2,12 +2,16 @@
 `Updated: 8 Oct 2020`  
 
 Solution consists of the following components:
-* Client-side management runtime
+* Client-side management runtime (also called CSE)
 * Server-side management service (password decryption service, or PDS)
 * Management tools
   * Powershell management module
   * Fat client UI
   * GPO templates
+
+High-lever architecture is shown in following figure:
+
+![PDS Multi Instancy](/images/PDS/architecture.jpg)
 
 Client side management components come in dedicated installation package; server side management service comes as separate package.
 
