@@ -32,7 +32,7 @@ However, for management of untrusted forests, the following prerequisites must b
 SID mappings are used for access control - User who wants to read or reset password must have his/her own SID (own SID or SID of group he/she is member of) 'paired' with SID that has been delegated the permission for password read/reset in untrusted forest.
 SID mapping is used to establish this pairing of SIDs.
 
-For management of untrusted forest connection credentials, see command [Add-AdmPwdSupportedForest](./Add-AdmPwdSupportedForest.md)
+For management of untrusted forest connection credentials, see command [Add-AdmPwdPdsSupportedForest](Add-AdmPwdPdsSupportedForest.md)
 
 ## EXAMPLES
 

@@ -1,5 +1,5 @@
 # PDS in High Availability (HA) mode
-In general, it is a good to spread the risk of PSD service outages (usually caused by the unavailability of the server where the PDS is installed in) to several other servers. We generally recommend at least two instances of PDS on two different servers. These servers can be joined in one domain or in several separated domains (To learn more, see [Multi-forest configuration chapter](Multi-Forest.md#How-to-configure-PDS-to-manage-passwords-in-remote-forests)).
+In general, it is a good to spread the risk of PSD service outages (usually caused by the unavailability of the server where the PDS is installed in) to several other servers. We generally recommend at least two instances of PDS on two different servers. These servers can be joined in one domain or in several separated domains (To learn more, see [Multi-forest configuration chapter](Multi-Forest.md)).
 PDS in multi-instance mode demonstrates the following figure.
 
 ![PDS Multi Instancy](/images/PDS/PDS-multi-instance.jpg)

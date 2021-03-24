@@ -29,7 +29,7 @@ However, for management of untrusted forests, the following prerequisites must b
 
 For management of untrusted AD forest, connection credentials are required.  
 For management of trusted AD forest, connection credentials are optional.
-For management of SID mappings for management of untrusted forest, see command [Add-AdmPwdSidMapping](./Add-AdmPwdSidMapping.md)
+For management of SID mappings for management of untrusted forest, see command [Add-AdmPwdPdsSidMapping](Add-AdmPwdPdsSidMapping.md)
 
 
 ## EXAMPLES
