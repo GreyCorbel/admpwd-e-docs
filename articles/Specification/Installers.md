@@ -6,7 +6,7 @@ The following installers are delivered with the solution:
 </ul>
 Specifics for each installer are summarized in respective sections:
 
-* [Management runtime](./Installers/Managed-Clients.md)
+* [Management runtime](./Installers/Managed-Clients.html)
 * [Management tools](./Installers/Management-Tools.md)
   * [Fat client UI](./Installers/Management-Tools/Fat-Client.md)
   * [GPO Templates](./Installers/Management-Tools/GPO-Templates.md)
