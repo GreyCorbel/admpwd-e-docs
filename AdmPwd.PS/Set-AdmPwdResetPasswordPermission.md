@@ -31,8 +31,8 @@ Allows members of group MyDomain\AdmPwdPasswordResetters to request reset of loc
 
 ### -Identity
 Identification of container where to set the permission.
-Permissions are then inherited to computers within this container and subcontainers.
-  Identity can be either name or distinguishedName of the container
+Permissions are then inherited to computers within this container and subcontainers.  
+Identity can be either name or distinguishedName of the container, or distinguishedName of computer object (so you can delegate the permission on individual computer objects)
 
 ```yaml
 Type: String

@@ -32,7 +32,7 @@ Allows members of group MyDomain\AdmPwdPasswordReaders to read local admin passw
 ### -Identity
 Identification of container where to set permissions.  
 Permissions are then inherited to computers within this container and subcontainers.  
-Identity can be either name or distinguishedName of the container
+Identity can be either name or distinguishedName of the container, or distinguishedName of computer object (so you can delegate the permission on individual computer objects)
 
 ```yaml
 Type: String
