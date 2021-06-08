@@ -13,7 +13,7 @@ High-lever architecture is shown in following figure:
 
 ![PDS Multi Instancy](/images/PDS/architecture.jpg)
 
-Client side management components come in dedicated installation package; server side management service comes as separate package.
+Client side management components come in dedicated installation package; server side management service comes as separate package. 
 
 This specification provides complete technical reference for all components of solution that comes in official installation packages.
 
