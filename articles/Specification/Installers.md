@@ -13,6 +13,6 @@ Specifics for each installer are summarized in respective sections:
   * [PowerShell Module](./Installers/Management-Tools/PowerShell-Module.md)
   * [Password Decryption Service](./Installers/Management-Tools/Password-Decryption-Service.md)
 
-All installers are packaged as MSI packages. Standard Windows Management runtime is packaged as dedicated MSI (to minimize size and avoid distribution of unnecessary component installer to managed machines); Management tools are packaged in another MSI.
+All installers are packaged as MSI packages. Standard Windows Management runtime is packaged as dedicated MSI (to minimize size and avoid distribution of unnecessary component installer to managed machines); Management tools are packaged in another MSI. 
 
 Nano Server management runtime  package is delivered as AppX package, with configuration settings implemented as PowerShell DSC configuration.
