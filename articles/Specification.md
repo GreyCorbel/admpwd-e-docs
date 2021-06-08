@@ -24,7 +24,7 @@ Content in this section provides technical specification of the solution. Conten
 * [Management tools][4]  
 * [Installers][5]
 
-  [1]: Specification/Managed-Clients.md
+  [1]: Specification/Managed-Clients.html
   [2]: Specification/Active-Directory.md
   [3]: Specification/Password-Decryption-Service.md
   [4]: Specification/Management-Tools.md
