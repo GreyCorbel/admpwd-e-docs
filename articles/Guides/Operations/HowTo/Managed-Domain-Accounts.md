@@ -56,3 +56,9 @@ Usage:
 `RunAsAdmin.exe /user:<username> /path:<path to executable to run> [/NoLocalProfile]`
 
 [![image](../../../../images/Operations/User/managed-domain-account-runas.png "Using Managed Domain Accounts to reach server as different user")](../../../../images/Operations/User/managed-domain-account-runas.png)
+
+## AdminSDHolder issue
+If you would like to use managed domain accounts functionality for accounts that are part of the Domain Admins protected group, you will encounter a problem where SDprop repeatedly resets the rights granted to PDS to communicate with Active Directory and the rights granted to groups to read / reset passwords at regular intervals to be comply with the AdminSDHolder template.
+
+As a best practice, we recommend solving this situation adding accounts or groups that assign the rights of PDS to communicate with AD and accounts to read or reset passwords to AdminSDHolder.
+

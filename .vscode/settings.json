@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/a7f01723-8e07-4613-bd59-f70d4ae5384c/resourceGroups/RG_WEB/providers/Microsoft.Web/sites/admpwd-docs",
+    "appService.deploySubpath": "_site"
+}
