@@ -54,7 +54,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AdmPwd.Types.PublicKey
 ## NOTES
-Only holders of Key Admin role are allowed to call this cmdlet. Others receive Access Denied error.
+Only holders of PDSAdmin role (by design: Enterprise Admins role; it is defined in PDS.config) are allowed to call this cmdlet. Others receive Access Denied error.
+Note: PDSAdmin role can be easily changed by PDS.config editting. For immediate changes, you still need to restart the Win32 service called AdmPwd.E.PDS.
 
 For FIPS compliance, key size of at least 2048 bits is required.
 For performance reasons, it is not recommended to use keys longer than 4096 bits.

@@ -21,6 +21,8 @@
     href: ../articles/Guides/Operations/HowTo/PDS-for-reporting.md
   - name: PDS High availability
     href: ../articles/Guides/Operations/HowTo/PDS-multi-instance.md
+  - name: Deleted objects takeownership
+    href: ../articles/Guides/Operations/HowTo/PDS-deleted-objects-ownership.md
     
 
 
