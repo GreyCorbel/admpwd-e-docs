@@ -25,6 +25,9 @@ Best practice is to create a group for purpose of delegation of permissions, and
 
 Specific scenario is when service is hosted on domain controller:  this case, Password Decryptor service may also access AD locally on the same DC in the security context of NETWORK SERVICE account. In this case, NETWORK SERVICE needs to be granted service permissions on AD as well.
 
+*Note: On a fresh installation of the system, it is necessary to first take over the rights to cn = 'Deleted Objects' before running the pwsh cmdlet, otherwise PDS rights delegation to retrieve the password of the deleted object ends with an "access denied" error.*
+*To learn more see following article:* [cn='Deleted Objects' takeownership](~/articles/Guides/Operations/HowTo/PDS-deleted-objects-ownership.md)
+
 ## EXAMPLES
 
 ### Example 1
