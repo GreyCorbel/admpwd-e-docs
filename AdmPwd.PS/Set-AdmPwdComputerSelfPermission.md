@@ -27,7 +27,7 @@ Every computer that is expected to maintain own admin password needs to have thi
 Set-AdmPwdComputerSelfPermission -Identity:MyComputers
 ```
 
-Delegates permission to report new local admin passwrd to AD to computers under OU MyComputers
+Delegates permission to report new local admin password to AD to computers under OU MyComputers
 
 ## PARAMETERS
 
