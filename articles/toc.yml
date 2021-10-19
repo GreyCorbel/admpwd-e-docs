@@ -54,7 +54,7 @@
         - name: Fat Client UI
           href: Specification/Installers/Management-Tools/Fat-client.md
         - name: GPO Templates
-          href: Specification/Installers/Management-Tools/GPO-Templates.md
+          href: Specification/Installers/Management-Tools/GPO-templates.md
         - name: Powershell module
           href: Specification/Installers/Management-Tools/PowerShell-Module.md
         - name: Password Decryption Service

@@ -44,7 +44,7 @@ By default, PDS keeps decryption keys as separate files (1 file per key pair) in
 Setup program sets ACL on this subfolder so as only SYSTEM, Administrators and NETWORK SERVICE have access to it.  
 File system based key store is default option available in PDS setup. File system supports local and file share key storage - default is local storage.  
 PDS also supports extensibility to allow implementation of custom key storage. Currently available key storage options are:
-* **File system keystore**: stores keys on file system (by default in CryptoKeyStorage folder in PDS install folder). This keystore isalways  installed with PDS.
+* **File system keystore**: stores keys on file system (by default in CryptoKeyStorage folder in PDS install folder). This keystore is always installed with PDS.
 * **Azure KeyVault keystore**: Stores keys in Azure KeyVault as secrets. Loads the keys from KeyVault upon PDS service startup.  
   *Note*: Implementation of this keystore is available as open source solution on <a href="https://github.com/greycorbel/admpwd-e/tree/master/KeyStores/AzureKeyVaultStore" target="_blank" rel="noopener noreferrer">GitHub</a>
 * **HSM keystore**: This type of keystore is available with any HSM supported by <a href="https://www.cryptomathic.com/products/key-management/crypto-service-gateway" target="_blank" rel="noopener noreferrer">Cryptomathic Crypto Service Gateway (CSG)</a>  
