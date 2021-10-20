@@ -9,9 +9,11 @@ Solution consists of the following components:
   * Fat client UI
   * GPO templates
 
-High-lever architecture is shown in following figure:
+## High-lever architecture 
+is shown in following figure:
 
 ![PDS Multi Instancy](/images/PDS/architecture.jpg)
+
 
 Client side management components come in dedicated installation package; server side management service comes as separate package. 
 
@@ -38,4 +40,16 @@ There are also supporting and integration tools available, namely:
 * Implementation of additional keystores for storage of proivate keys maintained by PDS - available as open source on [Github](https://github.com/GreyCorbel/admpwd-e/tree/master/KeyStores)
 
 Relevant documentation and specifications are available on Github, together with respective tools.
- 
+## Network communication requirements
+
+| Source | Target | Port | Note |
+|---|---|---|---|
+| Managed machine | AD | 389/tcp | Encrypted via Kerberos encryption |
+|  |  | 88/tcp/udp | Kerberos auth |
+| Managed machine | PDS | 61184/udp | Just for centralized activity reporting. Needs to be turned on via GPO; turned off by default |
+| PDS | AD | 389/tcp | Encrypted via Kerberos encryption |
+|  |  | 88/tcp/udp | Kerberos auth |
+| Management tools | AD | 389/tcp | Encrypted via Kerberos encryption Direct communication to AD to extend AD schema and configure permissions. Password manipulation is done via PDS. |
+|  |  | 88/tcp/udp | Kerberos auth |
+| Management tools | PDS | 61184/tcp | Encrypted via Kerberos encryption |
+|  |  | 88/tcp/udp | Kerberos auth |
