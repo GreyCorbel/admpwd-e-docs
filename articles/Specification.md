@@ -1,5 +1,5 @@
 ﻿# Technical specification
-`Updated: 8 Oct 2020`  
+`Updated: 19 Jan 2022`  
 
 Solution consists of the following components:
 * Client-side management runtime (also called CSE)
@@ -9,7 +9,7 @@ Solution consists of the following components:
   * Fat client UI
   * GPO templates
 
-## High-lever architecture 
+## High-level architecture 
 is shown in following figure:
 
 ![PDS Multi Instancy](/images/PDS/architecture.jpg)
