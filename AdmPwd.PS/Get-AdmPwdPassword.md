@@ -23,7 +23,7 @@ Optionally returns password history, if target computer is configured to maintai
 
 ### Example 1
 ```powershell
-Get-AdmPwdPassword -ComputerName:MyComputer -IncludeHistory
+(Get-AdmPwdPassword -ComputerName:MyComputer -IncludeHistory).passwordHistory
 ```
 
 Gets password of local administrator on computer MyComputer, including password history
