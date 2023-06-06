@@ -23,6 +23,8 @@
     href: ../articles/Guides/Operations/HowTo/PDS-multi-instance.md
   - name: Deleted objects takeownership
     href: ../articles/Guides/Operations/HowTo/PDS-deleted-objects-ownership.md
+  - name: ADUC snap-in context menu
+    href: ../articles/Guides/Operations/HowTo/UI-to-context-menu.md
     
 
 
