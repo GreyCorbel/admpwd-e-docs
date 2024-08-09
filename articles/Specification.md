@@ -1,5 +1,5 @@
 ﻿# Technical specification
-`Updated: 19 Jan 2022`  
+`Updated: 09 Aug 2024`  
 
 Solution consists of the following components:
 * Client-side management runtime (also called CSE)
@@ -8,6 +8,9 @@ Solution consists of the following components:
   * Powershell management module
   * Fat client UI
   * GPO templates
+
+## Supported platforms
+All Windows platforms starting from Windows XP / 2003 up to Windows 11/2022 - including Windows Server 2022 Nano.
 
 ## High-level architecture 
 is shown in following figure:

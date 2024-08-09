@@ -1,5 +1,5 @@
 # AdmPwd.E documentation homepage
-`Updated: 25 Dec 2020`  
+`Updated: 09 Aug 2024`  
 
 Documentation provides detailed information about AdmPwd.E features and implementation details in the following areas:
 * [Functional specification](articles/Specification.md): Specs for solution components. Implementation, configuration, logging, etc.
