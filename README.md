@@ -1,16 +1,25 @@
 # AdmPwd.E-documentation
-Repo contains documentation for AdmPwd.E solution
+This repository contains documentation for AdmPwd.E solution
 
 Currently covers the following areas:
-* Functional specification of solution components
-* Integration SDK (PDS Wrapper) reference 
-* PowerShell management module reference
-* Install guide
-* User guide
-* Operations guide
-* How-to's and FAQ
+
+1 Functional specification of solution components
+
+2 Integration SDK (PDS Wrapper) reference 
+
+3 PowerShell management module reference
+
+4 Install guide
+
+5 User guide
+
+6 Operations guide
+
+7 How-to's and FAQ
 
 Coming along the way:
-* More HowTo's
-* Script samples
+
+1 More HowTo's
+
+2 Script samples
 
